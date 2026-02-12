@@ -1,0 +1,100 @@
+@import "tailwindcss";
+
+@keyframes shine {
+    0% {
+        opacity: 0.6;
+        filter: brightness(1);
+    }
+
+    50% {
+        opacity: 1;
+        filter: brightness(1.5);
+    }
+
+    100% {
+        opacity: 0.6;
+        filter: brightness(1);
+    }
+}
+
+h1 {
+    animation: gradientMove 4s ease-in-out infinite, shine 3s ease-in-out infinite;
+}
+
+@keyframes fishGradient {
+    0% {
+        background-position: 0% 50%;
+        transform: translateY(0);
+    }
+
+    50% {
+        background-position: 100% 50%;
+        transform: translateY(-10px);
+    }
+
+    100% {
+        background-position: 0% 50%;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fishShine {
+    0% {
+        opacity: 0.8;
+        filter: brightness(1);
+    }
+
+    50% {
+        opacity: 1;
+        filter: brightness(1.6);
+    }
+
+    100% {
+        opacity: 0.8;
+        filter: brightness(1);
+    }
+}
+
+.animate-fish-gradient {
+    background-size: 200% 200%;
+    animation: fishGradient 5s ease-in-out infinite, fishShine 3.5s ease-in-out infinite;
+}
+
+@keyframes birdGradient {
+    0% {
+        background-position: 0% 50%;
+        transform: translateY(0);
+    }
+
+    50% {
+        background-position: 100% 50%;
+        transform: translateY(-12px);
+    }
+
+    100% {
+        background-position: 0% 50%;
+        transform: translateY(0);
+    }
+}
+
+@keyframes birdShine {
+    0% {
+        opacity: 0.8;
+        filter: brightness(1);
+    }
+
+    50% {
+        opacity: 1;
+        filter: brightness(1.4);
+    }
+
+    100% {
+        opacity: 0.8;
+        filter: brightness(1);
+    }
+}
+
+.animate-bird-gradient {
+    background-size: 200% 200%;
+    animation: birdGradient 5s ease-in-out infinite, birdShine 3.5s ease-in-out infinite;
+}
