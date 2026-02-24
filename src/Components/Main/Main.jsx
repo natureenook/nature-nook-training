@@ -101,50 +101,50 @@ export default function Main() {
   }
 
   return (
-    <div className="space-y-20 bg-[#f0f7f4] text-[#2e2e2e] font-[Montserrat]">
+    <div className="space-y-12 md:space-y-20 bg-[#f0f7f4] text-[#2e2e2e] font-[Montserrat]">
       <TrainingHeader />
 
-      <h1 className="flex items-center justify-center relative text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-amber-500 via-yellow-400 to-orange-500 animate-gradient-move drop-shadow-lg tracking-widest uppercase">
+      <h1 className="flex items-center justify-center relative text-3xl md:text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-amber-500 via-yellow-400 to-orange-500 animate-gradient-move drop-shadow-lg tracking-wide md:tracking-widest uppercase text-center px-4">
         Շների Աշխարհ 🐾
       </h1>
       <AnimatedSection delay={100}><Dog /></AnimatedSection>
-      <h1 className="flex items-center justify-center relative text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-amber-500 via-yellow-400 to-orange-500 animate-gradient-move drop-shadow-lg tracking-widest uppercase">
+      <h1 className="flex items-center justify-center relative text-3xl md:text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-amber-500 via-yellow-400 to-orange-500 animate-gradient-move drop-shadow-lg tracking-wide md:tracking-widest uppercase text-center px-4">
         Սովորենք Միասին 🐾
       </h1>
       <AnimatedSection delay={200}><CardDog /></AnimatedSection>
 
-      <h1 className="flex items-center justify-center relative text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-amber-800 via-orange-700 to-yellow-600 animate-cat-gradient drop-shadow-xl tracking-widest uppercase">
+      <h1 className="flex items-center justify-center relative text-3xl md:text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-amber-800 via-orange-700 to-yellow-600 animate-cat-gradient drop-shadow-xl tracking-wide md:tracking-widest uppercase text-center px-4">
         Կատուների Աշխարհ 🐾
       </h1>
       <AnimatedSection delay={200}><Cat /></AnimatedSection>
-      <h1 className="flex items-center justify-center relative text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-amber-800 via-orange-700 to-yellow-600 animate-cat-gradient drop-shadow-xl tracking-widest uppercase">
+      <h1 className="flex items-center justify-center relative text-3xl md:text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-amber-800 via-orange-700 to-yellow-600 animate-cat-gradient drop-shadow-xl tracking-wide md:tracking-widest uppercase text-center px-4">
         Սովորենք Միասին  🐾
       </h1>
       <AnimatedSection delay={300}><CardCat /></AnimatedSection>
 
-      <h1 className="flex justify-center items-center relative text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-sky-500 via-blue-600 to-cyan-400 animate-fish-gradient drop-shadow-xl tracking-widest uppercase">
+      <h1 className="flex items-center justify-center relative text-3xl md:text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-sky-500 via-blue-600 to-cyan-400 animate-fish-gradient drop-shadow-xl tracking-wide md:tracking-widest uppercase text-center px-4">
         Ձկների Աշխարհ 🌊
       </h1>
       <AnimatedSection delay={200}><Fish /></AnimatedSection>
-      <h1 className="flex justify-center items-center relative text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-sky-500 via-blue-600 to-cyan-400 animate-fish-gradient drop-shadow-xl tracking-widest uppercase">
+      <h1 className="flex items-center justify-center relative text-3xl md:text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-sky-500 via-blue-600 to-cyan-400 animate-fish-gradient drop-shadow-xl tracking-wide md:tracking-widest uppercase text-center px-4">
         Սովորենք Միասին 🌊
       </h1>
       <AnimatedSection delay={200}><CardFish /></AnimatedSection>
 
-      <h1 className="flex justify-center items-center relative text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-sky-400 via-yellow-300 to-amber-500 animate-bird-gradient drop-shadow-xl tracking-widest uppercase">
+      <h1 className="flex items-center justify-center relative text-3xl md:text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-sky-400 via-yellow-300 to-amber-500 animate-bird-gradient drop-shadow-xl tracking-wide md:tracking-widest uppercase text-center px-4">
         Թռչունների Աշխարհ 🕊️
       </h1>
       <AnimatedSection delay={300}><Bird /></AnimatedSection>
-      <h1 className="flex justify-center items-center relative text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-sky-400 via-yellow-300 to-amber-500 animate-bird-gradient drop-shadow-xl tracking-widest uppercase">
+      <h1 className="flex items-center justify-center relative text-3xl md:text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-sky-400 via-yellow-300 to-amber-500 animate-bird-gradient drop-shadow-xl tracking-wide md:tracking-widest uppercase text-center px-4">
         Սովորենք Միասին 🕊️
       </h1>
       <AnimatedSection delay={400}><CardBird /></AnimatedSection>
 
-      <h1 className="flex justify-center items-center relative text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-green-700 via-emerald-500 to-lime-400 animate-plant-gradient drop-shadow-xl tracking-widest uppercase">
+      <h1 className="flex items-center justify-center relative text-3xl md:text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-green-700 via-emerald-500 to-lime-400 animate-plant-gradient drop-shadow-xl tracking-wide md:tracking-widest uppercase text-center px-4">
         Բույսերի Աշխարհ 🌿
       </h1>
       <AnimatedSection delay={600}><Plant /></AnimatedSection>
-      <h1 className="flex justify-center items-center relative text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-green-700 via-emerald-500 to-lime-400 animate-plant-gradient drop-shadow-xl tracking-widest uppercase">
+      <h1 className="flex items-center justify-center relative text-3xl md:text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-green-700 via-emerald-500 to-lime-400 animate-plant-gradient drop-shadow-xl tracking-wide md:tracking-widest uppercase text-center px-4">
         Սովորենք Միասին 🌿
       </h1>
       <AnimatedSection delay={700}><CardPlants /></AnimatedSection>

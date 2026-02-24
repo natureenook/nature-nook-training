@@ -52,19 +52,19 @@ export default function FishInfo() {
 
     return (
         <div className="bg-[#E0F7FA] text-gray-800">
-            <header className="bg-[#4FC3F7] text-white py-8 text-center relative">
+            <header className="bg-[#4FC3F7] text-white py-8 text-center relative px-4">
 
-                <h1 className="text-4xl font-bold">🌊 Բնության անկյուն — Ձկների մասին</h1>
-                <p className="mt-2 text-lg">Ուսուցողական էջ՝ ձկների կարևոր տեղեկություններով</p>
+                <h1 className="text-2xl md:text-4xl font-bold">🌊 Բնության անկյուն — Ձկների մասին</h1>
+                <p className="mt-2 text-base md:text-lg">Ուսուցողական էջ՝ ձկների կարևոր տեղեկություններով</p>
             </header>
             <button
                 onClick={() => navigate(-1)}
-                className="absolute left-6 top-6 bg-white text-[#0288D1] font-semibold px-4 py-2 rounded-full shadow-lg hover:bg-[#b3e5fc] transition"
+                className="absolute left-6 top-6 bg-white text-[#0288D1] font-semibold px-4 py-2 rounded-full shadow-lg hover:bg-[#b3e5fc] transition z-10"
             >
                 ← Հետ
             </button>
 
-            <main className="max-w-6xl mx-auto px-4 py-12 space-y-24">
+            <main className="max-w-6xl mx-auto px-4 py-8 md:py-12 space-y-12 md:space-y-24">
                 {sections.map((section, index) => (
                     <motion.section
                         key={index}
@@ -74,23 +74,23 @@ export default function FishInfo() {
                         transition={{ duration: 0.8, ease: "easeOut" }}
                         className="flex flex-col md:flex-row items-center bg-[#B3E5FC] rounded-3xl shadow-2xl overflow-hidden"
                     >
-                        <div className="md:w-1/2 h-64 md:h-auto">
+                        <div className="md:w-1/2 h-64 md:h-auto min-h-[250px]">
                             <img
                                 src={section.image}
                                 alt={section.title}
                                 className="w-full h-full object-cover"
                             />
                         </div>
-                        <div className="md:w-1/2 p-8 md:p-12">
-                            <h2 className="text-3xl font-bold text-[#0288D1] mb-4">{section.title}</h2>
-                            <p className="text-gray-700 text-lg leading-relaxed">{section.content}</p>
+                        <div className="md:w-1/2 p-6 md:p-12">
+                            <h2 className="text-2xl md:text-3xl font-bold text-[#0288D1] mb-4">{section.title}</h2>
+                            <p className="text-gray-700 text-base md:text-lg leading-relaxed">{section.content}</p>
                         </div>
-                        
+
                     </motion.section>
                 ))}
-            
+
             </main>
-            <Link to="/FishQuiz"  className="text-3xl font-extrabold flex items-center justify-center border">Հարցեր</Link>
+            <Link to="/FishQuiz" className="text-3xl font-extrabold flex items-center justify-center border">Հարցեր</Link>
             <footer className="bg-[#4FC3F7] text-white py-8 text-center">
                 <p className="text-lg">Մենք ստեղծում ենք ապագայի համար՝ միասին 🌿</p>
             </footer>

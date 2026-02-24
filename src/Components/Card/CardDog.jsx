@@ -4,8 +4,8 @@ import { Link } from "react-router-dom";
 const CanvasCard = ({ img, title, details, reverse, link }) => {
     return (
         <Link
-            to={link} 
-            className="relative block w-[400px] h-[400px] p-5 text-inherit no-underline group"
+            to={link}
+            className="relative block w-[90%] m-[5%] max-w-[400px] aspect-square p-5 text-inherit no-underline group"
         >
             <div className={`absolute top-10 w-full h-full z-0 transform -rotate-[10deg] -skew-[10deg] group-hover:-rotate-[14deg] group-hover:-skew-[14deg] group-hover:scale-[0.96] transition-all duration-300`}>
                 <svg className="w-full h-full">
@@ -28,18 +28,18 @@ const CanvasCard = ({ img, title, details, reverse, link }) => {
                 <img
                     src={img}
                     alt={title}
-                    className="max-w-[350px] max-h-[350px] opacity-30 scale-[0.9] transition-all duration-700 group-hover:opacity-100 group-hover:scale-100"
+                    className="w-[85%] h-[85%] object-contain opacity-30 scale-[0.9] transition-all duration-700 group-hover:opacity-100 group-hover:scale-100"
                 />
             </div>
 
-            <div className={`absolute bottom-0 ${reverse ? "left-[-25%]" : "left-[80%]"} uppercase text-yellow-400 z-10`}>
-                <strong className="block text-[62px] text-black transform translate-x-[-80px] opacity-0 transition-all duration-[750ms] ease-[cubic-bezier(0.68,-0.55,0.265,1.55)] delay-[100ms] group-hover:translate-x-0 group-hover:opacity-100">
+            <div className={`absolute inset-0 flex flex-col justify-center items-center text-center z-20 text-yellow-400`}>
+                <strong className="block text-4xl md:text-[62px] text-black transform scale-50 opacity-0 transition-all duration-[750ms] ease-[cubic-bezier(0.68,-0.55,0.265,1.55)] delay-[100ms] group-hover:scale-100 group-hover:opacity-100">
                     {title.split(" ")[0]}
                 </strong>
-                <strong className="block text-[62px] text-black transform translate-x-[-80px] opacity-0 transition-all duration-[750ms] ease-[cubic-bezier(0.68,-0.55,0.265,1.55)] delay-[200ms] group-hover:translate-x-0 group-hover:opacity-100">
+                <strong className="block text-4xl md:text-[62px] text-black transform scale-50 opacity-0 transition-all duration-[750ms] ease-[cubic-bezier(0.68,-0.55,0.265,1.55)] delay-[200ms] group-hover:scale-100 group-hover:opacity-100">
                     {title.split(" ")[1] || ""}
                 </strong>
-                <span className="block text-md text-gray-700 transform translate-x-[-80px] opacity-0 transition-all duration-[750ms] ease-[cubic-bezier(0.68,-0.55,0.265,1.55)] delay-[300ms] group-hover:translate-x-0 group-hover:opacity-100">
+                <span className="block text-md text-gray-700 transform scale-50 opacity-0 transition-all duration-[750ms] ease-[cubic-bezier(0.68,-0.55,0.265,1.55)] delay-[300ms] group-hover:scale-100 group-hover:opacity-100">
                     {details}
                 </span>
             </div>
@@ -50,7 +50,7 @@ const CanvasCard = ({ img, title, details, reverse, link }) => {
 const CardDog = () => {
     const cards = [
         {
-            img: "/CardDog.jpg", 
+            img: "/CardDog.jpg",
             title: "Հավատարիմ Ընկեր",
             details: "Սովորենք Շների Ճիշտ խնամքի մասին",
             reverse: true,
@@ -66,7 +66,7 @@ const CardDog = () => {
     ];
 
     return (
-        <div className="flex justify-center items-center min-h-screen bg-gray-100 gap-10 flex-wrap">
+        <div className="flex justify-center items-center min-h-screen bg-gray-100 gap-10 flex-wrap max-[1250px]:flex-col">
             {cards.map((card, i) => (
                 <CanvasCard key={i} {...card} />
             ))}

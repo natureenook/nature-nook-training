@@ -58,19 +58,19 @@ export default function BirdInfo() {
 
     return (
         <div className="bg-[#E3F6F5] text-gray-800">
-            <header className="bg-[#7FB77E] text-white py-8 text-center relative">
+            <header className="bg-[#7FB77E] text-white py-8 text-center relative px-4">
 
-                <h1 className="text-4xl font-bold">🐦 Բնության անկյուն — Թռչունների մասին</h1>
-                <p className="mt-2 text-lg">Ուսուցողական էջ՝ թռչունների կարևոր տեղեկություններով</p>
+                <h1 className="text-2xl md:text-4xl font-bold">🐦 Բնության անկյուն — Թռչունների մասին</h1>
+                <p className="mt-2 text-base md:text-lg">Ուսուցողական էջ՝ թռչունների կարևոր տեղեկություններով</p>
             </header>
             <button
                 onClick={() => navigate(-1)}
-                className=" cursor-pointer absolute left-6 top-6 bg-white text-[#7FB77E] font-semibold px-4 py-2 rounded-full shadow-lg hover:bg-[#d9f2de] transition"
+                className=" cursor-pointer absolute left-6 top-6 bg-white text-[#7FB77E] font-semibold px-4 py-2 rounded-full shadow-lg hover:bg-[#d9f2de] transition z-10"
             >
                 ← Հետ
             </button>
 
-            <main className="max-w-6xl mx-auto px-4 py-12 space-y-24">
+            <main className="max-w-6xl mx-auto px-4 py-8 md:py-12 space-y-12 md:space-y-24">
                 {sections.map((section, index) => (
                     <motion.section
                         key={index}
@@ -80,16 +80,16 @@ export default function BirdInfo() {
                         transition={{ duration: 0.8, ease: "easeOut" }}
                         className="flex flex-col md:flex-row items-center bg-[#A8D5BA] rounded-3xl shadow-2xl overflow-hidden"
                     >
-                        <div className="md:w-1/2 h-64 md:h-auto">
+                        <div className="md:w-1/2 h-64 md:h-auto min-h-[250px]">
                             <img
                                 src={section.image}
                                 alt={section.title}
                                 className="w-full h-full object-cover"
                             />
                         </div>
-                        <div className="md:w-1/2 p-8 md:p-12">
-                            <h2 className="text-3xl font-bold text-[#7FB77E] mb-4">{section.title}</h2>
-                            <p className="text-gray-700 text-lg leading-relaxed">{section.content}</p>
+                        <div className="md:w-1/2 p-6 md:p-12">
+                            <h2 className="text-2xl md:text-3xl font-bold text-[#7FB77E] mb-4">{section.title}</h2>
+                            <p className="text-gray-700 text-base md:text-lg leading-relaxed">{section.content}</p>
                         </div>
                     </motion.section>
                 ))}

@@ -106,28 +106,28 @@ export default function CatQuiz() {
     const passed = correctCount >= 8;
 
     return (
-        <div className="max-w-4xl mx-auto p-6 bg-white shadow-2xl rounded-2xl">
-            <h1 className="text-3xl font-bold text-center mb-6 text-amber-800">
+        <div className="max-w-4xl mx-auto p-4 md:p-6 bg-white shadow-2xl rounded-2xl">
+            <h1 className="text-2xl md:text-3xl font-bold text-center mb-6 text-amber-800">
                 🐱 Կատուների Թեստ — Քննություն
             </h1>
 
             {questions.map((q, qIndex) => (
                 <div key={qIndex} className="mb-6 border-b pb-4">
-                    <p className="font-semibold text-lg text-gray-800 mb-3">
+                    <p className="font-semibold text-base md:text-lg text-gray-800 mb-3">
                         {qIndex + 1}. {q.question}
                     </p>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
                         {q.options.map((option, oIndex) => (
                             <label
                                 key={oIndex}
-                                className={`border rounded - lg px - 4 py - 2 cursor - pointer ${answers[qIndex] === oIndex
-                                        ? "bg-amber-100 border-amber-400"
-                                        : "hover:bg-gray-100"
-                                    } `}
+                                className={`border rounded-lg px-4 py-2 cursor-pointer ${answers[qIndex] === oIndex
+                                    ? "bg-amber-100 border-amber-400"
+                                    : "hover:bg-gray-100"
+                                    }`}
                             >
                                 <input
                                     type="radio"
-                                    name={`question - ${qIndex} `}
+                                    name={`question-${qIndex}`}
                                     value={oIndex}
                                     checked={answers[qIndex] === oIndex}
                                     onChange={() => handleSelect(qIndex, oIndex)}
@@ -152,7 +152,7 @@ export default function CatQuiz() {
             {showModal && (
                 <div className="fixed inset-0 bg-black/50 bg-opacity-50 flex justify-center items-start pt-10 z-50">
                     <div className="bg-white rounded-2xl shadow-2xl w-11/12 max-w-4xl p-6 overflow-y-auto max-h-[80vh]">
-                        <h2 className="text-2xl font-bold text-center mb-4 text-amber-700">
+                        <h2 className="text-xl md:text-2xl font-bold text-center mb-4 text-amber-700">
                             🧾 Քննության Արդյունքներ
                         </h2>
 
@@ -162,8 +162,8 @@ export default function CatQuiz() {
                             return (
                                 <div
                                     key={i}
-                                    className={`mb - 4 p - 4 rounded - lg ${isCorrect ? "bg-green-50" : "bg-red-50"
-                                        } `}
+                                    className={`mb-4 p-4 rounded-lg ${isCorrect ? "bg-green-50" : "bg-red-50"
+                                        }`}
                                 >
                                     <p className="font-semibold text-gray-800">
                                         {i + 1}. {q.question}
@@ -175,8 +175,8 @@ export default function CatQuiz() {
                                         </span>{" "}
                                         —{" "}
                                         <span
-                                            className={`font - bold ${isCorrect ? "text-green-600" : "text-red-600"
-                                                } `}
+                                            className={`font-bold ${isCorrect ? "text-green-600" : "text-red-600"
+                                                }`}
                                         >
                                             {isCorrect ? "Ճիշտ ✅" : "Սխալ ❌"}
                                         </span>
@@ -196,8 +196,8 @@ export default function CatQuiz() {
 
                         <div className="text-center mt-6">
                             <p
-                                className={`text - 2xl font - bold ${passed ? "text-green-700" : "text-red-700"
-                                    } `}
+                                className={`text-xl md:text-2xl font-bold ${passed ? "text-green-700" : "text-red-700"
+                                    }`}
                             >
                                 {passed
                                     ? "🎉 Դուք անցել եք քննությունը։ Շնորհավորում ենք!"
