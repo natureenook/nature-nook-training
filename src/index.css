@@ -1,4 +1,12 @@
 @import "tailwindcss";
+/* Mobile first */
+@media (max-width: 480px) {}
+
+/* Small tablets */
+@media (max-width: 768px) {}
+
+/* Laptop and up */
+@media (min-width: 1024px) {}
 
 @keyframes shine {
     0% {
