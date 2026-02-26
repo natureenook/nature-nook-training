@@ -2,46 +2,48 @@ import React from "react";
 import { motion } from "framer-motion";
 import { Link, useNavigate } from "react-router-dom";
 
+const img = (name) => `${import.meta.env.BASE_URL}${name}`;
+
 const sections = [
     {
         title: "Ձկների ծագումն ու նախնիները 🐟",
-        image: "public/Fish1.jpg",
+        image: img("Fish1.jpg"),
         content:
             "Ձկները առաջացել են ավելի քան 500 միլիոն տարի առաջ՝ ջրային միջավայրում։ Նրանց նախնիները՝ կոշտկաշկային և փափկամարմին տեսակները, հիմնեցին առաջին ջրային էկոհամակարգերը, որոնք հետագայում հնարավորություն տվեցին էվոլյուցիային զարգանալ դեպի բոլոր ջրային միջավայրերը։",
     },
     {
         title: "Ձկների խնամքի հիմունքները 💧",
-        image: "public/Fish2.jpg",
+        image: img("Fish2.jpg"),
         content:
             "Ձկների համար կարևոր է ճիշտ ջերմաստիճանը, ջրի մաքրությունը և բավարար թթվածինը։ Ակվարիումի ջուրը պետք է պարբերաբար փոխել, սնուցումը լիներ չափավոր, իսկ լույսն ու թունավոր նյութերը հսկվեն՝ ձկների առողջությունը պահպանելու համար։",
     },
     {
         title: "Ինչից պետք է խուսափել ձկների դեպքում 🚫",
-        image: "public/Fish3.jpg",
+        image: img("Fish3.jpg"),
         content:
             "Ձկերին չի կարելի տալ մարդու սնունդ, աղոտ ջուր կամ թունավոր նյութեր։ Շատ տեսակի ձկներ զգայուն են քլորի, ծանր մետաղների և սննդային սխալ հավասարակշռության նկատմամբ։ Նվազագույն չափից դուրս սնուցումը նույնպես կարող է վնասել նրանց առողջությանը։",
     },
     {
         title: "Ձկների օգտակարությունը բնության մեջ 🌊💙",
-        image: "public/Fish4.jpg",
+        image: img("Fish4.jpg"),
         content:
             "Ձկները մասնակցում են էկոհամակարգի պահպանմանը՝ վերահսկելով միջատների և բջջային օրգանիզմների թիվը, ինչպես նաև նպաստում ջրային միջավայրի խոնավության հավասարակշռությանը։ Նրանք կարևոր են սննդի շղթայում և մարդկանց համար՝ հանգստության և ուսուցման աղբյուր։",
     },
     {
         title: "Ձկների զգայունությունը և հմտությունները 👁️",
-        image: "public/Fish5.jpg",
+        image: img("Fish5.jpg"),
         content:
             "Ձկները ունեն զարգացած զգայունություն՝ տեսողական, հոտառական և կողմնորոշման հմտություններ։ Որոշ տեսակներ կարողանում են ընկալել ջրի հոսքը, ճառագայթները և նույնիսկ մարդու գործողությունները՝ խուսափելու վտանգներից։",
     },
     {
         title: "Ձկների կյանքի տևողությունը ⏳🐠",
-        image: "public/Fish4.jpg",
+        image: img("Fish4.jpg"),
         content:
             "Ձկների կյանքի տևողությունը տարբեր է՝ փոքր ձկները ապրում են 1–3 տարի, միջին տեսակները՝ մինչև 10 տարի, իսկ մեծ ջրային ձկները կարող են հասնել 20–50 տարի։ Խնամքը, ջրի որակը և սնուցումը անմիջապես ազդում են նրանց երկարատև առողջության վրա։",
     },
     {
         title: "Առողջ ձկի նշանները 🐟✨",
-        image: "public/Fish1.jpg",
+        image: img("Fish1.jpg"),
         content:
             "Առողջ ձուկը ակտիվ է, ունի պայծառ ու ողջամիտ գունավորում, ակնառու շարժումներ և հստակ սերուցքային կամակատարմամբ վարք։ Ախորժակը նորմալ է, լողալը բնական, և լորձաթաղանթը մաքուր է։",
     },
@@ -59,7 +61,7 @@ export default function FishInfo() {
                 ← Հետ
             </button>
 
-            <main className="max-w-6xl mx-auto px-4 py-8 md:py-12 space-y-12 md:space-y-24 ">
+            <main className="max-w-6xl mx-auto px-4 py-8 md:py-12 space-y-12 md:space-y-24">
                 {sections.map((section, index) => (
                     <motion.section
                         key={index}
@@ -74,20 +76,30 @@ export default function FishInfo() {
                                 src={section.image}
                                 alt={section.title}
                                 className="w-full h-full object-cover"
+                                loading="lazy"
                             />
                         </div>
-                        <div className="md:w-1/2 p-6 md:p-12">
-                            <h2 className="text-2xl md:text-3xl font-bold text-[#0288D1] mb-4">{section.title}</h2>
-                            <p className="text-gray-700 text-base md:text-lg leading-relaxed">{section.content}</p>
-                        </div>
 
+                        <div className="md:w-1/2 p-6 md:p-12">
+                            <h2 className="text-2xl md:text-3xl font-bold text-[#0288D1] mb-4">
+                                {section.title}
+                            </h2>
+                            <p className="text-gray-700 text-base md:text-lg leading-relaxed">
+                                {section.content}
+                            </p>
+                        </div>
                     </motion.section>
                 ))}
-
             </main>
-            <div className="flex justify-center items-center">
-            <Link to="/FishQuiz" className="text-3xl font-extrabold  items-center justify-center border w-50 flex  just">Հարցեր</Link>
-</div>        
+
+            <div className="flex justify-center items-center pb-10">
+                <Link
+                    to="/FishQuiz"
+                    className="text-lg font-bold px-8 py-4 rounded-2xl bg-white text-[#0288D1] shadow-lg hover:bg-[#b3e5fc] transition"
+                >
+                    Հարցեր
+                </Link>
+            </div>
         </div>
     );
 }

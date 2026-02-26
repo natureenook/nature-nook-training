@@ -1,7 +1,6 @@
 import React, { useMemo } from "react";
 import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
-import Footer from "../Footer/Footer";
 
 const img = (name) => `${import.meta.env.BASE_URL}${name}`;
 
