@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import TrainingHeader from "../Header/Headerr.jsx";
 // import Footer from "../Footer/Footer.jsx";
 
-import Dog from "../Caruselle/";
+import Dog from "../Caruselle/Dog";
 import Cat from "../Caruselle/Cat";
 import Fish from "../Caruselle/Fish";
 import Bird from "../Caruselle/Bird";
@@ -47,7 +47,6 @@ export default function Main() {
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.7, ease: "easeOut" }}
     >
-      <TrainingHeader />
 
       <div className="space-y-12 md:space-y-20 pb-14">
         <AnimatedSection delay={100}><Dog /></AnimatedSection>
