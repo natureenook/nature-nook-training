@@ -6,43 +6,35 @@ export default function Bird() {
             id: 1,
             title: "Թռչունների կախարդական ծագումը 🦖➡️🕊️",
             text: "Գիտե՞ս, որ թռչունները սերում են դինոզավրերից։ Նրանց նախնիներն ունեցել են թե՛ ատամներ, թե՛ պոչ՝ նախքան ժամանակակից փետուրավոր տեսքը ստանալը։",
-            image: "public/Bird1.jpg",
+            image: `${import.meta.env.BASE_URL}Bird1.jpg`,
         },
         {
             id: 2,
             title: "Թռչելու հրաշքը ✈️🐦",
             text: "Թռչունները թռչում են շնորհիվ թեթև կմախքի և հզոր թևերի մկանների։ Նրանց փետուրները ձևավորված են այնպես, որ հոսող օդը ստեղծի վերելք։",
-            image: "public/Bird2.jpg",
+            image: `${import.meta.env.BASE_URL}Bird2.jpg`,
         },
         {
             id: 3,
             title: "Գույների և ձայների աշխարհը 🎨🎶",
             text: "Թռչունների գույներն ու երգերը հաղորդակցման ձևեր են․ գունավոր փետուրները գրավում են զուգընկերոջը, իսկ երգը՝ սահմանում տարածքը։",
-            image: "public/Bird3.jpg",
+            image: `${import.meta.env.BASE_URL}Bird3.jpg`,
         },
         {
             id: 4,
             title: "Թռչունների օգտակար դերը բնության մեջ 🌍🐤",
             text: "Թռչունները օգնում են պահպանել բնության հավասարակշռությունը՝ տարածելով սերմեր և վերահսկելով միջատների քանակը։",
-            image: "public/Bird4.jpg",
+            image: `${import.meta.env.BASE_URL}Bird4.jpg`,
         },
         {
             id: 5,
             title: "Թռչունների աշխարհի բազմազանությունը 🌈🕊️",
             text: "Աշխարհում կա ավելի քան 10,000 տեսակ թռչուն՝ սկսած փոքրիկ հումինգբերդից մինչև հսկա ոստրիճը։ Յուրաքանչյուրն ունի իր յուրահատուկ տեղը բնության մեջ։",
-            image: "public/Bird5.jpg",
+            image: `${import.meta.env.BASE_URL}Bird5.jpg`,
         },
     ];
 
-
     const [current, setCurrent] = useState(0);
-
-    useEffect(() => {
-        const timer = setInterval(() => {
-            nextSlide();
-        }, 5000);
-        return () => clearInterval(timer);
-    }, [current]);
 
     const nextSlide = () => {
         setCurrent((prev) => (prev + 1) % slides.length);
@@ -53,6 +45,13 @@ export default function Bird() {
     };
 
     const goToSlide = (index) => setCurrent(index);
+
+    useEffect(() => {
+        const timer = setInterval(() => {
+            nextSlide();
+        }, 5000);
+        return () => clearInterval(timer);
+    }, [current]); // թողնում եմ նույնը ինչպես քեզ մոտ էր
 
     return (
         <div className="relative w-full h-screen overflow-hidden border bg-black">
@@ -107,10 +106,9 @@ export default function Bird() {
                         onClick={() => goToSlide(index)}
                         className={`w-3 h-3 rounded-full cursor-pointer transition-all ${index === current ? "bg-white" : "bg-white/50 hover:bg-white/80"
                             }`}
-                    ></button>
+                    />
                 ))}
             </div>
         </div>
     );
 }
-

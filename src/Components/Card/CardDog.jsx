@@ -110,13 +110,13 @@ const CanvasCard = ({ img, title, details, link }) => {
 const CardDog = () => {
     const cards = [
         {
-            img: "/CardDog.jpg",
+            img: `${import.meta.env.BASE_URL}CardDog.jpg`,
             title: "Հավատարիմ Ընկեր",
             details: "Սովորենք շների ճիշտ խնամքը",
             link: "/DogInfo",
         },
         {
-            img: "/CardDog2.jpg",
+            img: `${import.meta.env.BASE_URL}CardDog2.jpg`,
             title: "Հարցեր Quiz",
             details: "Ստուգենք մեր գիտելիքները",
             link: "/DogQuiz",

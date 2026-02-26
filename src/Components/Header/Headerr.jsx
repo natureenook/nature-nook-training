@@ -37,35 +37,35 @@ export default function TrainingHeader() {
                 ))}
             </div>
             <div>
-                    <Link to={"/"}>
-                        <h1 className="text-2xl md:text-3xl font-bold text-[#0b241f] tracking-wide">
-                            Nature Nook <span className="text-[#5d8c73]">Training</span>
-                        </h1>
-                    </Link>
+                <Link to={"/"}>
+                    <h1 className="text-2xl md:text-3xl font-bold text-[#0b241f] tracking-wide">
+                        Nature Nook <span className="text-[#5d8c73]">Training</span>
+                    </h1>
+                </Link>
 
-                    {/* Desktop Navigation */}
-                    {/* Desktop Navigation */}
-                    <nav className="hidden lg:flex gap-8 text-lg font-medium">
-                        <Link to="/DogInfo" className="hover:text-[#5d8c73] transition">Շներ</Link>
-                        <Link to="/CatInfo" className="hover:text-[#5d8c73] transition">Կատուներ</Link>
-                        <Link to="/BirdsInfo" className="hover:text-[#5d8c73] transition">Թռչուններ</Link>
-                        <Link to="/FishInfo" className="hover:text-[#5d8c73] transition">Ձկներ</Link>
-                        <Link to="/PlantsInfo" className="hover:text-[#5d8c73] transition">Բույսեր</Link>
-                    </nav>
+                {/* Desktop Navigation */}
+                {/* Desktop Navigation */}
+                <nav className="hidden lg:flex gap-8 text-lg font-medium">
+                    <Link to="/DogInfo" className="hover:text-[#5d8c73] transition">Շներ</Link>
+                    <Link to="/CatInfo" className="hover:text-[#5d8c73] transition">Կատուներ</Link>
+                    <Link to="/BirdsInfo" className="hover:text-[#5d8c73] transition">Թռչուններ</Link>
+                    <Link to="/FishInfo" className="hover:text-[#5d8c73] transition">Ձկներ</Link>
+                    <Link to="/PlantsInfo" className="hover:text-[#5d8c73] transition">Բույսեր</Link>
+                </nav>
 
-                    {/* Mobile Menu Button */}
-                    <button
-                        className="lg:hidden text-[#0b241f] focus:outline-none z-50 relative"
-                        onClick={toggleMenu}
-                    >
-                        <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                            {isMenuOpen ? (
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-                            ) : (
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-                            )}
-                        </svg>
-                    </button>
+                {/* Mobile Menu Button */}
+                <button
+                    className="lg:hidden text-[#0b241f] focus:outline-none z-50 relative"
+                    onClick={toggleMenu}
+                >
+                    <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        {isMenuOpen ? (
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                        ) : (
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+                        )}
+                    </svg>
+                </button>
 
                 {/* Mobile Navigation Overlay */}
                 {isMenuOpen && (
@@ -131,7 +131,7 @@ export default function TrainingHeader() {
                 >
                     <div className="relative w-64 h-64 md:w-80 md:h-80 rounded-full bg-white/80 shadow-2xl overflow-hidden flex items-center justify-center">
                         <img
-                            src="public/logo.png"
+                            src={`${import.meta.env.BASE_URL}logo.png`}
                             alt="Nature Nook"
                             className="w-[95%] h-[95%] object-cover rounded-full"
                         />

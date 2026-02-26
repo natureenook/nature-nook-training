@@ -1,3 +1,4 @@
+// CardFish.jsx
 import React from "react";
 import { Link } from "react-router-dom";
 
@@ -110,13 +111,13 @@ const CanvasCard = ({ img, title, details, link }) => {
 const CardFish = () => {
     const cards = [
         {
-            img: "/CardDog.jpg",
+            img: `${import.meta.env.BASE_URL}CardDog.jpg`,
             title: "Ձկների Աշխարհ",
             details: "Սովորենք ձկների ճիշտ խնամքի մասին 🌊",
             link: "/FishInfo",
         },
         {
-            img: "/CardDog2.jpg",
+            img: `${import.meta.env.BASE_URL}CardDog2.jpg`,
             title: "Հարցեր Quiz",
             details: "Ստուգենք մեր գիտելիքները ✅",
             link: "/FishQuiz",

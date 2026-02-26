@@ -1,3 +1,4 @@
+// CardPlants.jsx
 import React from "react";
 import { Link } from "react-router-dom";
 
@@ -110,13 +111,13 @@ const CanvasCard = ({ img, title, details, link }) => {
 const CardPlants = () => {
     const cards = [
         {
-            img: "/CardPlants.jpg", // եթե չունես՝ դիր նույն /CardDog.jpg
+            img: `${import.meta.env.BASE_URL}CardPlants.jpg`, // եթե չունես՝ դիր CardDog.jpg
             title: "Բույսերի Աշխարհ",
             details: "Ստեղծենք փոքրիկ բնություն տանը 🌿",
             link: "/PlantsInfo",
         },
         {
-            img: "/CardPlants2.jpg", // եթե չունես՝ դիր նույն /CardDog2.jpg
+            img: `${import.meta.env.BASE_URL}CardPlants2.jpg`, // եթե չունես՝ դիր CardDog2.jpg
             title: "Հարցեր Quiz",
             details: "Ստուգենք մեր գիտելիքները ✅",
             link: "/PlantsQuiz",

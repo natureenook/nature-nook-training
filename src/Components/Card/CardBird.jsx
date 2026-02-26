@@ -20,31 +20,33 @@ const CanvasCard = ({ img, title, details, link }) => {
       "
         >
             {/* BACK GLOW */}
-            <div className="
-        absolute inset-0
-        bg-gradient-to-br
-        from-orange-400/40
-        via-amber-500/30
-        to-orange-900/40
-        blur-2xl
-        opacity-0
-        group-hover:opacity-100
-        transition duration-700
-      "/>
+            <div
+                className="
+          absolute inset-0
+          bg-gradient-to-br
+          from-orange-400/40
+          via-amber-500/30
+          to-orange-900/40
+          blur-2xl
+          opacity-0
+          group-hover:opacity-100
+          transition duration-700
+        "
+            />
 
             {/* CARD BODY */}
             <div
                 className="
-        relative h-full w-full
-        bg-white/70
-        backdrop-blur-xl
-        border border-white/40
-        shadow-xl
-        rounded-3xl
-        flex flex-col
-        justify-end
-        overflow-hidden
-      "
+          relative h-full w-full
+          bg-white/70
+          backdrop-blur-xl
+          border border-white/40
+          shadow-xl
+          rounded-3xl
+          flex flex-col
+          justify-end
+          overflow-hidden
+        "
             >
                 {/* IMAGE */}
                 <img
@@ -63,34 +65,40 @@ const CanvasCard = ({ img, title, details, link }) => {
                 />
 
                 {/* DARK OVERLAY */}
-                <div className="
-          absolute inset-0
-          bg-gradient-to-t
-          from-black/70
-          via-black/30
-          to-transparent
-        "/>
+                <div
+                    className="
+            absolute inset-0
+            bg-gradient-to-t
+            from-black/70
+            via-black/30
+            to-transparent
+          "
+                />
 
                 {/* CONTENT */}
-                <div className="
-          relative z-10
-          p-6
-          text-white
-          space-y-2
-          translate-y-6
-          group-hover:translate-y-0
-          transition-all duration-500
-        ">
+                <div
+                    className="
+            relative z-10
+            p-6
+            text-white
+            space-y-2
+            translate-y-6
+            group-hover:translate-y-0
+            transition-all duration-500
+          "
+                >
                     <h2 className="text-2xl sm:text-3xl font-bold leading-tight">
                         {words[0]} <br /> {words[1]}
                     </h2>
 
-                    <p className="
-            text-sm sm:text-base
-            opacity-0
-            group-hover:opacity-100
-            transition duration-500
-          ">
+                    <p
+                        className="
+              text-sm sm:text-base
+              opacity-0
+              group-hover:opacity-100
+              transition duration-500
+            "
+                    >
                         {details}
                     </p>
                 </div>
@@ -99,16 +107,16 @@ const CanvasCard = ({ img, title, details, link }) => {
     );
 };
 
-const CardDog = () => {
+const CardBird = () => {
     const cards = [
         {
-            img: "/CardDog.jpg",
+            img: `${import.meta.env.BASE_URL}CardDog.jpg`,
             title: "Հավատարիմ Ընկեր",
             details: "Սովորենք շների ճիշտ խնամքը",
             link: "/BirdsInfo",
         },
         {
-            img: "/CardDog2.jpg",
+            img: `${import.meta.env.BASE_URL}CardDog2.jpg`,
             title: "Հարցեր Quiz",
             details: "Ստուգենք մեր գիտելիքները",
             link: "/BirdsQuiz",
@@ -148,4 +156,4 @@ const CardDog = () => {
     );
 };
 
-export default CardDog;
+export default CardBird;
