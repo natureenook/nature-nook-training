@@ -122,6 +122,14 @@ export default function DogInfo() {
                     </motion.section>
                 ))}
             </main>
+            <div className="flex justify-center items-center pb-10">
+                <Link
+                    to="/DogQuiz"
+                    className="text-lg font-bold px-8 py-4 rounded-2xl bg-white text-[#0288D1] shadow-lg hover:bg-[#b3e5fc] transition"
+                >
+                    Հարցեր
+                </Link>
+            </div>
 
         </div>
     );
