@@ -4,29 +4,37 @@ import { motion } from "framer-motion";
 export default function Animation({ onFinish }) {
     const [loading, setLoading] = useState(false);
     const [progress, setProgress] = useState(0);
-    const [showContent, setShowContent] = useState(false);
 
     useEffect(() => {
-        if (loading) {
-            let percent = 0;
-            const interval = setInterval(() => {
-                percent += 2;
-                setProgress(percent);
-                if (percent >= 100) {
-                    clearInterval(interval);
-                    setTimeout(() => {
-                        setShowContent(true);
-                        onFinish(); 
-                    }, 500);
-                }
-            }, 100);
-            return () => clearInterval(interval);
-        }
+        // Preloader-ի ժամանակ փակենք scroll-ը
+        document.body.style.overflow = "hidden";
+        return () => {
+            document.body.style.overflow = "auto";
+        };
+    }, []);
+
+    useEffect(() => {
+        if (!loading) return;
+
+        let percent = 0;
+        const interval = setInterval(() => {
+            percent += 2;
+            setProgress(percent);
+
+            if (percent >= 100) {
+                clearInterval(interval);
+                setTimeout(() => {
+                    onFinish();
+                }, 400);
+            }
+        }, 80);
+
+        return () => clearInterval(interval);
     }, [loading, onFinish]);
 
-    if (!showContent) {
-        return (
-            <div className="relative h-screen flex flex-col justify-center items-center text-center text-white font-[Montserrat] overflow-hidden">
+    return (
+        <div className="fixed inset-0 z-[9999] overflow-hidden">
+            <div className="relative h-full w-full flex flex-col justify-center items-center text-center text-white font-[Montserrat] overflow-hidden">
                 <img
                     src="https://images.unsplash.com/photo-1592194996308-7b43878e84a6?auto=format&fit=crop&w=1470&q=80"
                     alt="Nature Background"
@@ -38,16 +46,16 @@ export default function Animation({ onFinish }) {
                     className="relative z-10 px-6 max-w-3xl"
                     initial={{ opacity: 0, y: 40 }}
                     animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 1.3 }}
+                    transition={{ duration: 1.0 }}
                 >
                     <h1 className="text-4xl md:text-5xl font-bold mb-6 leading-snug drop-shadow-lg">
                         🌿 Nature Nook Training
                     </h1>
 
                     <p className="text-lg md:text-xl text-gray-100 leading-relaxed mb-8 drop-shadow-md">
-                        Այս training-ի ընթացքում կսովորենք կենդանիների, շների, թռչունների, բույսերի
-                        և ձկների մասին ամենակարևոր նրբությունները, ինչպես ճիշտ խնամել նրանց, հասկանալ
-                        բնության լեզուն և լինել նրա մաս։<br />
+                        Այս training-ի ընթացքում կսովորենք կենդանիների, շների, թռչունների, բույսերի և ձկների
+                        մասին ամենակարևոր նրբությունները, ինչպես ճիշտ խնամել նրանց, հասկանալ բնության լեզուն և լինել նրա մաս։
+                        <br />
                         Եթե պատրաստ եք՝ սկսենք 🐾
                     </p>
 
@@ -55,7 +63,7 @@ export default function Animation({ onFinish }) {
                         className="italic text-green-200 border-l-4 border-green-400 pl-4 text-lg md:text-xl mb-10 drop-shadow-md"
                         initial={{ opacity: 0, x: -20 }}
                         animate={{ opacity: 1, x: 0 }}
-                        transition={{ delay: 0.5, duration: 1 }}
+                        transition={{ delay: 0.3, duration: 0.8 }}
                     >
                         «Nature Nook Training — այն տեղն է, որտեղ մարդն ու կենդանին սովորում են խոսել նույն լեզվով»։
                     </motion.blockquote>
@@ -82,8 +90,6 @@ export default function Animation({ onFinish }) {
                     )}
                 </motion.div>
             </div>
-        );
-    }
-
-    return null; 
+        </div>
+    );
 }
