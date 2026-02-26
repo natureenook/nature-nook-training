@@ -1,8 +1,6 @@
 import React, { useEffect, useMemo, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
-import TrainingHeader from "../Header/Headerr";
-import TrainingNavbar from "../Header/TrainingNavbar";
 
 const STORAGE_KEY = "bird_quiz_result_v1";
 const REDIRECT_TO = "/BirdsInfo"; // փոխիր քո ուզած route-ով (օր. "/")
@@ -200,7 +198,7 @@ export default function BirdQuiz() {
     return (
         <div className="min-h-screen bg-gradient-to-b from-amber-50 via-white to-white">
             {/* Քո navbar-ը */}
-               <TrainingNavbar fixed />
+          
 
             <div className="mx-auto max-w-5xl px-4 py-6 sm:py-10">
                 {/* Header */}

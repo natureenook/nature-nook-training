@@ -1,7 +1,6 @@
 import React, { useEffect, useMemo, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
-import TrainingNavbar from "../Header/TrainingNavbar";
 
 const STORAGE_KEY = "cat_quiz_result_v1";
 const REDIRECT_TO = "/CatInfo"; // փոխիր՝ օրինակ "/" կամ "/CatInfo"
@@ -198,7 +197,6 @@ export default function CatQuiz() {
 
     return (
         <div className="min-h-screen bg-gradient-to-b from-amber-50 via-white to-white">
-            <TrainingNavbar fixed />
             <div className="pt-20 md:pt-24 mx-auto max-w-5xl px-4 py-6 sm:py-10">
                 <div className="rounded-3xl border border-amber-100 bg-white/80 backdrop-blur shadow-xl">
                     <div className="p-5 sm:p-8">

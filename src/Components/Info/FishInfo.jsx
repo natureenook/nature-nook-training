@@ -51,20 +51,15 @@ export default function FishInfo() {
     const navigate = useNavigate();
 
     return (
-        <div className="bg-[#E0F7FA] text-gray-800">
-            <header className="bg-[#4FC3F7] text-white py-8 text-center relative px-4">
-
-                <h1 className="text-2xl md:text-4xl font-bold">🌊 Բնության անկյուն — Ձկների մասին</h1>
-                <p className="mt-2 text-base md:text-lg">Ուսուցողական էջ՝ ձկների կարևոր տեղեկություններով</p>
-            </header>
+        <div className="bg-[#E0F7FA] text-gray-800 mt-15">
             <button
                 onClick={() => navigate(-1)}
-                className="absolute left-6 top-6 bg-white text-[#0288D1] font-semibold px-4 py-2 rounded-full shadow-lg hover:bg-[#b3e5fc] transition z-10"
+                className="absolute left-6 top-20 bg-white text-[#0288D1] font-semibold px-4 py-2 rounded-full shadow-lg hover:bg-[#b3e5fc] transition z-10"
             >
                 ← Հետ
             </button>
 
-            <main className="max-w-6xl mx-auto px-4 py-8 md:py-12 space-y-12 md:space-y-24">
+            <main className="max-w-6xl mx-auto px-4 py-8 md:py-12 space-y-12 md:space-y-24 ">
                 {sections.map((section, index) => (
                     <motion.section
                         key={index}
@@ -90,10 +85,9 @@ export default function FishInfo() {
                 ))}
 
             </main>
-            <Link to="/FishQuiz" className="text-3xl font-extrabold flex items-center justify-center border">Հարցեր</Link>
-            <footer className="bg-[#4FC3F7] text-white py-8 text-center">
-                <p className="text-lg">Մենք ստեղծում ենք ապագայի համար՝ միասին 🌿</p>
-            </footer>
+            <div className="flex justify-center items-center">
+            <Link to="/FishQuiz" className="text-3xl font-extrabold  items-center justify-center border w-50 flex  just">Հարցեր</Link>
+</div>        
         </div>
     );
 }

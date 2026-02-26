@@ -37,7 +37,6 @@ export default function TrainingHeader() {
                 ))}
             </div>
             <div>
-                <header className="relative z-10 flex items-center justify-between px-6 md:px-10 py-6 bg-white/70 backdrop-blur-md shadow-lg rounded-b-2xl">
                     <Link to={"/"}>
                         <h1 className="text-2xl md:text-3xl font-bold text-[#0b241f] tracking-wide">
                             Nature Nook <span className="text-[#5d8c73]">Training</span>
@@ -67,7 +66,6 @@ export default function TrainingHeader() {
                             )}
                         </svg>
                     </button>
-                </header>
 
                 {/* Mobile Navigation Overlay */}
                 {isMenuOpen && (

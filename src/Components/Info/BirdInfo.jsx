@@ -57,15 +57,10 @@ export default function BirdInfo() {
     const navigate = useNavigate();
 
     return (
-        <div className="bg-[#E3F6F5] text-gray-800">
-            <header className="bg-[#7FB77E] text-white py-8 text-center relative px-4">
-
-                <h1 className="text-2xl md:text-4xl font-bold">🐦 Բնության անկյուն — Թռչունների մասին</h1>
-                <p className="mt-2 text-base md:text-lg">Ուսուցողական էջ՝ թռչունների կարևոր տեղեկություններով</p>
-            </header>
+        <div className="bg-[#E3F6F5] text-gray-800 mt-15">
             <button
                 onClick={() => navigate(-1)}
-                className=" cursor-pointer absolute left-6 top-6 bg-white text-[#7FB77E] font-semibold px-4 py-2 rounded-full shadow-lg hover:bg-[#d9f2de] transition z-10"
+                className=" cursor-pointer absolute left-6 top-20 bg-white text-[#7FB77E] font-semibold px-4 py-2 rounded-full shadow-lg hover:bg-[#d9f2de] transition z-10"
             >
                 ← Հետ
             </button>
@@ -94,10 +89,6 @@ export default function BirdInfo() {
                     </motion.section>
                 ))}
             </main>
-
-            <footer className="bg-[#7FB77E] text-white py-8 text-center">
-                <p className="text-lg">Մենք ստեղծում ենք ապագայի համար՝ միասին 🌿</p>
-            </footer>
         </div>
     );
 }

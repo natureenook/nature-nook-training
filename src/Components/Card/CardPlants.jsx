@@ -1,95 +1,159 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const CanvasCard = ({ img, title, details, reverse, link }) => {
+const CanvasCard = ({ img, title, details, link }) => {
+    const words = title.trim().split(/\s+/);
+
     return (
         <Link
             to={link}
-            className={`relative block w-[90%] m-[5%] max-w-[400px] aspect-square p-5 text-inherit no-underline group`}
+            className="
+        group relative
+        w-full max-w-[380px]
+        aspect-[4/5]
+        rounded-3xl
+        overflow-hidden
+        cursor-pointer
+        transition-all duration-500
+        hover:scale-[1.03]
+        active:scale-95
+      "
         >
+            {/* BACK GLOW */}
             <div
-                className={`absolute top-10 ${reverse ? "left-[-40px]" : "left-[-40px]"
-                    } w-full h-full z-0 transform -rotate-[10deg] -skew-[10deg] group-hover:-rotate-[14deg] group-hover:-skew-[14deg] group-hover:scale-[0.96] transition-all duration-300`}
-            >
-                <svg className="w-full h-full">
-                    <defs>
-                        <linearGradient id={`grad-${title}`} x1="0%" y1="0%" x2="100%" y2="0%">
-                            <stop offset="0%" stopColor="rgb(253,137,68)" />
-                            <stop offset="100%" stopColor="rgb(153,75,23)" />
-                        </linearGradient>
-                    </defs>
-                    <rect
-                        fill="none"
-                        stroke={`url(#grad-${title})`}
-                        strokeWidth="4"
-                        className="w-full h-full stroke-dasharray-[2000] stroke-dashoffset-[2000] group-hover:animate-draw-line"
-                    />
-                </svg>
-            </div>
+                className="
+          absolute inset-0
+          bg-gradient-to-br
+          from-emerald-400/35
+          via-green-500/25
+          to-lime-900/35
+          blur-2xl
+          opacity-0
+          group-hover:opacity-100
+          transition duration-700
+        "
+            />
 
-            <div className="absolute top-0 left-0 w-full h-full flex items-center justify-center bg-white overflow-hidden transform -rotate-[10deg] -skew-[10deg] transition-all duration-300 group-hover:-rotate-[14deg] group-hover:-skew-[14deg] group-hover:scale-[0.96]">
+            {/* CARD BODY */}
+            <div
+                className="
+          relative h-full w-full
+          bg-white/70
+          backdrop-blur-xl
+          border border-white/40
+          shadow-xl
+          rounded-3xl
+          flex flex-col
+          justify-end
+          overflow-hidden
+        "
+            >
+                {/* IMAGE */}
                 <img
                     src={img}
                     alt={title}
-                    className="w-[85%] h-[85%] object-contain opacity-30 scale-[0.9] transition-all duration-700 group-hover:opacity-100 group-hover:scale-100"
+                    className="
+            absolute inset-0
+            w-full h-full
+            object-cover
+            opacity-70
+            scale-105
+            transition-all duration-700
+            group-hover:scale-110
+            group-hover:opacity-100
+          "
                 />
-            </div>
 
-            <div
-                className={`absolute inset-0 flex flex-col justify-center items-center text-center z-20 text-yellow-400`}
-            >
-                <strong className="block text-4xl md:text-[62px] text-black transform scale-50 opacity-0 transition-all duration-[750ms] ease-[cubic-bezier(0.68,-0.55,0.265,1.55)] delay-[100ms] group-hover:scale-100 group-hover:opacity-100">
-                    {title.split(" ")[0]}
-                </strong>
-                <strong className="block text-4xl md:text-[62px] text-black transform scale-50 opacity-0 transition-all duration-[750ms] ease-[cubic-bezier(0.68,-0.55,0.265,1.55)] delay-[200ms] group-hover:scale-100 group-hover:opacity-100">
-                    {title.split(" ")[1] || ""}
-                </strong>
-                <span className="block text-md text-gray-700 transform scale-50 opacity-0 transition-all duration-[750ms] ease-[cubic-bezier(0.68,-0.55,0.265,1.55)] delay-[300ms] group-hover:scale-100 group-hover:opacity-100">
-                    {details}
-                </span>
+                {/* DARK OVERLAY */}
+                <div
+                    className="
+            absolute inset-0
+            bg-gradient-to-t
+            from-black/70
+            via-black/30
+            to-transparent
+          "
+                />
+
+                {/* CONTENT */}
+                <div
+                    className="
+            relative z-10
+            p-6
+            text-white
+            space-y-2
+            translate-y-6
+            group-hover:translate-y-0
+            transition-all duration-500
+          "
+                >
+                    <h2 className="text-2xl sm:text-3xl font-bold leading-tight">
+                        {words[0]} <br /> {words[1] || ""}
+                    </h2>
+
+                    <p
+                        className="
+              text-sm sm:text-base
+              opacity-0
+              group-hover:opacity-100
+              transition duration-500
+            "
+                    >
+                        {details}
+                    </p>
+                </div>
             </div>
         </Link>
     );
 };
 
-const style = `
-@keyframes draw-line {
-  from { stroke-dashoffset: 2000; }
-  to { stroke-dashoffset: 0; }
-}
-.animate-draw-line {
-  animation: draw-line 5s cubic-bezier(0.19, 1, 0.22, 1) forwards;
-}
-`;
-
-const CardDog = () => {
+const CardPlants = () => {
     const cards = [
         {
-            img: "/CardDog.jpg",
-            title: " Բույսեր ",
-            details: "Ստեղծենք Փոքրիկ Բնություն Տանը",
-            reverse: true,
+            img: "/CardPlants.jpg", // եթե չունես՝ դիր նույն /CardDog.jpg
+            title: "Բույսերի Աշխարհ",
+            details: "Ստեղծենք փոքրիկ բնություն տանը 🌿",
             link: "/PlantsInfo",
         },
         {
-            img: "/CardDog2.jpg",
-            title: " Հարցեր ",
-            details: " Ստուգենք Մեր Գիտելիքները ",
-            reverse: false,
+            img: "/CardPlants2.jpg", // եթե չունես՝ դիր նույն /CardDog2.jpg
+            title: "Հարցեր Quiz",
+            details: "Ստուգենք մեր գիտելիքները ✅",
             link: "/PlantsQuiz",
         },
     ];
 
     return (
-        <>
-            <style>{style}</style>
-            <div className="flex justify-center items-center min-h-screen bg-gray-100 gap-10 flex-wrap max-[1250px]:flex-col">
-                {cards.map((card, index) => (
-                    <CanvasCard key={index} {...card} />
+        <div
+            className="
+        bg-gradient-to-br
+        from-green-50
+        via-emerald-50
+        to-lime-100
+        flex
+        justify-center
+        items-center
+        px-4
+        py-10
+      "
+        >
+            <div
+                className="
+          grid
+          gap-8
+          w-full
+          max-w-6xl
+          grid-cols-1
+          sm:grid-cols-2
+          place-items-center
+        "
+            >
+                {cards.map((card, i) => (
+                    <CanvasCard key={i} {...card} />
                 ))}
             </div>
-        </>
+        </div>
     );
 };
 
-export default CardDog;
+export default CardPlants;

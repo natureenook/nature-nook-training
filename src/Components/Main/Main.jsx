@@ -1,42 +1,45 @@
 import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
+
 import Dog from "../Caruselle/Dog";
 import Cat from "../Caruselle/Cat";
 import Fish from "../Caruselle/Fish";
 import Bird from "../Caruselle/Bird";
 import Plant from "../Caruselle/Plant";
+
 import CardDog from "../Card/CardDog";
 import CardCat from "../Card/CardCat";
 import CardFish from "../Card/CardFish";
 import CardPlants from "../Card/CardPlants";
 import CardBird from "../Card/CardBird.jsx";
+
 import { AnimatedSection } from "../Hook/AnimatedSection.jsx";
-import Footer from "../Footer/Footer.jsx";
 import TrainingHeader from "../Header/Headerr.jsx";
 
 export default function Main() {
   const [loading, setLoading] = useState(false);
   const [progress, setProgress] = useState(0);
   const [showContent, setShowContent] = useState(() => {
-    // Եթե օգտագործողը արդեն տեսել է preloader-ը
     const saved = localStorage.getItem("hasSeenPreloader");
     return saved === "true";
   });
 
   useEffect(() => {
-    if (loading) {
-      let percent = 0;
-      const interval = setInterval(() => {
-        percent += 2;
-        setProgress(percent);
-        if (percent >= 100) {
-          clearInterval(interval);
-          localStorage.setItem("hasSeenPreloader", "true"); // Պահում ենք, որ արդեն տեսել է
-          setTimeout(() => setShowContent(true), 500);
-        }
-      }, 100);
-      return () => clearInterval(interval);
-    }
+    if (!loading) return;
+
+    let percent = 0;
+    const interval = setInterval(() => {
+      percent += 2;
+      setProgress(percent);
+
+      if (percent >= 100) {
+        clearInterval(interval);
+        localStorage.setItem("hasSeenPreloader", "true");
+        setTimeout(() => setShowContent(true), 500);
+      }
+    }, 100);
+
+    return () => clearInterval(interval);
   }, [loading]);
 
   if (!showContent) {
@@ -60,9 +63,9 @@ export default function Main() {
           </h1>
 
           <p className="text-lg md:text-xl text-gray-100 leading-relaxed mb-8 drop-shadow-md">
-            Այս training-ի ընթացքում կսովորենք կենդանիների, շների, թռչունների, բույսերի
-            և ձկների մասին ամենակարևոր նրբությունները, ինչպես ճիշտ խնամել նրանց, հասկանալ
-            բնության լեզուն և լինել նրա մաս։<br />
+            Այս training-ի ընթացքում կսովորենք կենդանիների, շների, թռչունների, բույսերի և ձկների մասին
+            ամենակարևոր նրբությունները, ինչպես ճիշտ խնամել նրանց, հասկանալ բնության լեզուն և լինել նրա մաս։
+            <br />
             Եթե պատրաստ եք՝ սկսենք 🐾
           </p>
 
@@ -101,55 +104,60 @@ export default function Main() {
   }
 
   return (
-    <div className="space-y-12 md:space-y-20 bg-[#f0f7f4] text-[#2e2e2e] font-[Montserrat]">
+    <div className="bg-[#f0f7f4] text-[#2e2e2e] font-[Montserrat]">
       <TrainingHeader />
 
-      <h1 className="flex items-center justify-center relative text-3xl md:text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-amber-500 via-yellow-400 to-orange-500 animate-gradient-move drop-shadow-lg tracking-wide md:tracking-widest uppercase text-center px-4">
-        Շների Աշխարհ 🐾
-      </h1>
-      <AnimatedSection delay={100}><Dog /></AnimatedSection>
-      <h1 className="flex items-center justify-center relative text-3xl md:text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-amber-500 via-yellow-400 to-orange-500 animate-gradient-move drop-shadow-lg tracking-wide md:tracking-widest uppercase text-center px-4">
-        Սովորենք Միասին 🐾
-      </h1>
-      <AnimatedSection delay={200}><CardDog /></AnimatedSection>
+      <div className="space-y-12 md:space-y-20 pb-14">
+        <h1 className="flex items-center justify-center text-3xl md:text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-amber-500 via-yellow-400 to-orange-500 animate-gradient-move drop-shadow-lg tracking-wide md:tracking-widest uppercase text-center px-4">
+          Շների Աշխարհ 🐾
+        </h1>
+        <AnimatedSection delay={100}><Dog /></AnimatedSection>
 
-      <h1 className="flex items-center justify-center relative text-3xl md:text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-amber-800 via-orange-700 to-yellow-600 animate-cat-gradient drop-shadow-xl tracking-wide md:tracking-widest uppercase text-center px-4">
-        Կատուների Աշխարհ 🐾
-      </h1>
-      <AnimatedSection delay={200}><Cat /></AnimatedSection>
-      <h1 className="flex items-center justify-center relative text-3xl md:text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-amber-800 via-orange-700 to-yellow-600 animate-cat-gradient drop-shadow-xl tracking-wide md:tracking-widest uppercase text-center px-4">
-        Սովորենք Միասին  🐾
-      </h1>
-      <AnimatedSection delay={300}><CardCat /></AnimatedSection>
+        <h1 className="flex items-center justify-center text-3xl md:text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-amber-500 via-yellow-400 to-orange-500 animate-gradient-move drop-shadow-lg tracking-wide md:tracking-widest uppercase text-center px-4">
+          Սովորենք Միասին 🐾
+        </h1>
+        <AnimatedSection delay={200}><CardDog /></AnimatedSection>
 
-      <h1 className="flex items-center justify-center relative text-3xl md:text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-sky-500 via-blue-600 to-cyan-400 animate-fish-gradient drop-shadow-xl tracking-wide md:tracking-widest uppercase text-center px-4">
-        Ձկների Աշխարհ 🌊
-      </h1>
-      <AnimatedSection delay={200}><Fish /></AnimatedSection>
-      <h1 className="flex items-center justify-center relative text-3xl md:text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-sky-500 via-blue-600 to-cyan-400 animate-fish-gradient drop-shadow-xl tracking-wide md:tracking-widest uppercase text-center px-4">
-        Սովորենք Միասին 🌊
-      </h1>
-      <AnimatedSection delay={200}><CardFish /></AnimatedSection>
+        <h1 className="flex items-center justify-center text-3xl md:text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-amber-800 via-orange-700 to-yellow-600 animate-cat-gradient drop-shadow-xl tracking-wide md:tracking-widest uppercase text-center px-4">
+          Կատուների Աշխարհ 🐾
+        </h1>
+        <AnimatedSection delay={200}><Cat /></AnimatedSection>
 
-      <h1 className="flex items-center justify-center relative text-3xl md:text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-sky-400 via-yellow-300 to-amber-500 animate-bird-gradient drop-shadow-xl tracking-wide md:tracking-widest uppercase text-center px-4">
-        Թռչունների Աշխարհ 🕊️
-      </h1>
-      <AnimatedSection delay={300}><Bird /></AnimatedSection>
-      <h1 className="flex items-center justify-center relative text-3xl md:text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-sky-400 via-yellow-300 to-amber-500 animate-bird-gradient drop-shadow-xl tracking-wide md:tracking-widest uppercase text-center px-4">
-        Սովորենք Միասին 🕊️
-      </h1>
-      <AnimatedSection delay={400}><CardBird /></AnimatedSection>
+        <h1 className="flex items-center justify-center text-3xl md:text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-amber-800 via-orange-700 to-yellow-600 animate-cat-gradient drop-shadow-xl tracking-wide md:tracking-widest uppercase text-center px-4">
+          Սովորենք Միասին 🐾
+        </h1>
+        <AnimatedSection delay={300}><CardCat /></AnimatedSection>
 
-      <h1 className="flex items-center justify-center relative text-3xl md:text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-green-700 via-emerald-500 to-lime-400 animate-plant-gradient drop-shadow-xl tracking-wide md:tracking-widest uppercase text-center px-4">
-        Բույսերի Աշխարհ 🌿
-      </h1>
-      <AnimatedSection delay={600}><Plant /></AnimatedSection>
-      <h1 className="flex items-center justify-center relative text-3xl md:text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-green-700 via-emerald-500 to-lime-400 animate-plant-gradient drop-shadow-xl tracking-wide md:tracking-widest uppercase text-center px-4">
-        Սովորենք Միասին 🌿
-      </h1>
-      <AnimatedSection delay={700}><CardPlants /></AnimatedSection>
+        <h1 className="flex items-center justify-center text-3xl md:text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-sky-500 via-blue-600 to-cyan-400 animate-fish-gradient drop-shadow-xl tracking-wide md:tracking-widest uppercase text-center px-4">
+          Ձկների Աշխարհ 🌊
+        </h1>
+        <AnimatedSection delay={200}><Fish /></AnimatedSection>
 
-      <Footer />
+        <h1 className="flex items-center justify-center text-3xl md:text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-sky-500 via-blue-600 to-cyan-400 animate-fish-gradient drop-shadow-xl tracking-wide md:tracking-widest uppercase text-center px-4">
+          Սովորենք Միասին 🌊
+        </h1>
+        <AnimatedSection delay={200}><CardFish /></AnimatedSection>
+
+        <h1 className="flex items-center justify-center text-3xl md:text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-sky-400 via-yellow-300 to-amber-500 animate-bird-gradient drop-shadow-xl tracking-wide md:tracking-widest uppercase text-center px-4">
+          Թռչունների Աշխարհ 🕊️
+        </h1>
+        <AnimatedSection delay={300}><Bird /></AnimatedSection>
+
+        <h1 className="flex items-center justify-center text-3xl md:text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-sky-400 via-yellow-300 to-amber-500 animate-bird-gradient drop-shadow-xl tracking-wide md:tracking-widest uppercase text-center px-4">
+          Սովորենք Միասին 🕊️
+        </h1>
+        <AnimatedSection delay={400}><CardBird /></AnimatedSection>
+
+        <h1 className="flex items-center justify-center text-3xl md:text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-green-700 via-emerald-500 to-lime-400 animate-plant-gradient drop-shadow-xl tracking-wide md:tracking-widest uppercase text-center px-4">
+          Բույսերի Աշխարհ 🌿
+        </h1>
+        <AnimatedSection delay={600}><Plant /></AnimatedSection>
+
+        <h1 className="flex items-center justify-center text-3xl md:text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-green-700 via-emerald-500 to-lime-400 animate-plant-gradient drop-shadow-xl tracking-wide md:tracking-widest uppercase text-center px-4">
+          Սովորենք Միասին 🌿
+        </h1>
+        <AnimatedSection delay={700}><CardPlants /></AnimatedSection>
+      </div>
     </div>
   );
 }

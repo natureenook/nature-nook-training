@@ -52,18 +52,14 @@ const sections = [
 export default function CatInfo() {
     const navigate = useNavigate();
     return (
-        <div className="bg-[#F9F1E7] text-gray-800">
-            <header className="bg-[#DFAE8B] text-white py-8 text-center px-4">
-                <h1 className="text-2xl md:text-4xl font-bold">🐱 Բնության անկյուն — Կատուների մասին</h1>
-                <p className="mt-2 text-base md:text-lg">Ուսուցողական էջ՝ կատուների կարևոր տեղեկություններով</p>
-            </header>
+        <div className="bg-[#F9F1E7] text-gray-800 mt-15">
             <button
                 onClick={() => navigate(-1)}
-                className="absolute left-6 top-6 bg-white text-[#5d8c73] font-semibold px-4 py-2 rounded-full shadow-lg hover:bg-[#d9f2de] transition z-10"
+                className="absolute left-6 top-20 bg-white text-[#5d8c73] font-semibold px-4 py-2 rounded-full shadow-lg hover:bg-[#d9f2de] transition z-10"
             >
                 ← Հետ
             </button>
-            <main className="max-w-6xl mx-auto px-4 py-8 md:py-12 space-y-12 md:space-y-24">
+            <main className="max-w-6xl mx-auto px-4 py-8 md:py-12 space-y-12 md:space-y-24 ">
                 {sections.map((section, index) => (
                     <motion.section
                         key={index}
@@ -88,9 +84,6 @@ export default function CatInfo() {
                 ))}
             </main>
 
-            <footer className="bg-[#DFAE8B] text-white py-8 text-center">
-                <p className="text-lg">Մենք ստեղծում ենք ապագայի համար՝ միասին 🌿</p>
-            </footer>
         </div>
     );
 }
