@@ -65,7 +65,6 @@ export default function Main() {
         <AnimatedSection delay={700}><CardPlants /></AnimatedSection>
       </div>
 
-      {/* <Footer /> */}
     </motion.div>
   );
 }
