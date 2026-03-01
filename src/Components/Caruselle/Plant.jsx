@@ -1,5 +1,6 @@
 // Plant.jsx
 import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 
 export default function Plant() {
     const slides = [
@@ -8,30 +9,39 @@ export default function Plant() {
             title: "Բույսերի կախարդական աշխարհը 🌿✨",
             text: "Բույսերը մեր մոլորակի թթվածնի աղբյուրն են՝ նրանք վերածում են արևի լույսը էներգիայի՝ ֆոտոսինթեզի միջոցով։ Առանց բույսերի՝ կյանքը պարզապես չէր լինի։",
             image: `${import.meta.env.BASE_URL}Plant1.jpg`,
+            link: "/PlantsInfo"
         },
         {
             id: 2,
             title: "Տան կանաչ էներգիան 🌱🏡",
             text: "Սենյակային բույսերը ոչ միայն զարդարում են տունը, այլև մաքրում են օդը՝ կլանելով վնասակար նյութերը և բարձրացնելով տրամադրությունը։",
             image: `${import.meta.env.BASE_URL}Plant2.jpg`,
+            link: "/PlantsInfo"
+
         },
         {
             id: 3,
             title: "Բույսերի լեզուն 🌸💧",
             text: "Բույսերը չեն խոսում, բայց հաղորդակցվում են։ Նրանք արձագանքում են լույսին, ջրին և անգամ երաժշտությանը՝ աճելով ավելի արագ դրական միջավայրում։",
             image: `${import.meta.env.BASE_URL}Plant3.jpg`,
+            link: "/PlantsInfo"
+
         },
         {
             id: 4,
             title: "Բույսերի գաղտնի ուժը 🌻💪",
             text: "Շատ բույսեր ունեն բուժիչ հատկություններ։ Օրինակ՝ ալոեն հանգստացնում է մաշկը, իսկ լավանդան՝ մեղմացնում սթրեսը։ Բնությունը իսկական դեղատուն է։",
             image: `${import.meta.env.BASE_URL}Plant4.jpg`,
+            link: "/PlantsInfo"
+
         },
         {
             id: 5,
             title: "Բնության հավերժ շունչը 🌳💚",
             text: "Ծառերն ու բույսերը պահպանում են մոլորակի հավասարակշռությունը՝ մաքրելով օդը, կարգավորելով ջերմաստիճանը և ապահովելով կյանքի շարունակությունը։",
             image: `${import.meta.env.BASE_URL}Plant5.jpg`,
+            link: "/PlantsInfo"
+
         },
     ];
 
@@ -55,18 +65,24 @@ export default function Plant() {
                     transform: `translateX(-${current * (100 / slides.length)}%)`,
                 }}
             >
+
                 {slides.map((slide) => (
-                    <div
+                    <Link
                         key={slide.id}
-                        className="w-full flex-shrink-0 h-screen relative"
+                        to={slide.link}
+                        className="w-full flex-shrink-0 h-screen relative block"
                         style={{ width: `${100 / slides.length}%` }}
                     >
-                        <img src={slide.image} alt={slide.title} className="absolute w-full h-full object-cover brightness-75" />
+                        <img
+                            src={slide.image}
+                            alt={slide.title}
+                            className="absolute w-full h-full object-cover brightness-75"
+                        />
                         <div className="absolute inset-0 flex flex-col justify-center items-center text-center text-white px-6">
                             <h2 className="text-4xl md:text-6xl font-bold drop-shadow-lg">{slide.title}</h2>
                             <p className="text-lg md:text-xl mt-4 max-w-2xl drop-shadow-md">{slide.text}</p>
                         </div>
-                    </div>
+                    </Link>
                 ))}
             </div>
 

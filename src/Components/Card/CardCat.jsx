@@ -1,159 +1,90 @@
+// CardCat.jsx
 import React from "react";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const CanvasCard = ({ img, title, details, link }) => {
-    const words = title.trim().split(/\s+/);
+  const navigate = useNavigate();
 
-    return (
-        <Link
-            to={link}
-            className="
-        group relative
-        w-full max-w-[380px]
-        aspect-[4/5]
-        rounded-3xl
-        overflow-hidden
-        cursor-pointer
+  const safeTitle = String(title ?? "");
+  const words = safeTitle.trim().split(/\s+/);
+
+  return (
+    <div
+      className="
+        relative w-full max-w-[500px]
+        h-[280px] sm:h-[320px]
+        rounded-3xl overflow-hidden
+        shadow-xl
         transition-all duration-500
-        hover:scale-[1.03]
+        hover:scale-[1.02]
         active:scale-95
       "
+    >
+      <img
+        src={img}
+        alt={safeTitle}
+        className="absolute inset-0 w-full h-full object-cover object-right"
+      />
+
+      <div className="absolute inset-0 bg-slate-900/55" />
+      <div className="absolute inset-0 bg-gradient-to-r from-slate-900/80 via-slate-900/35 to-transparent" />
+
+      <div className="relative z-10 h-full flex flex-col justify-between p-6 sm:p-10">
+        <div>
+          <h2 className="text-white font-extrabold leading-none tracking-tight">
+            <span className="block text-3xl sm:text-5xl">{words[0] || ""}</span>
+            <span className="block text-3xl sm:text-5xl mt-2">
+              {words.slice(1).join(" ")}
+            </span>
+          </h2>
+
+          {details ? (
+            <p className="mt-4 text-white/85 text-sm sm:text-base max-w-md">
+              {details}
+            </p>
+          ) : null}
+        </div>
+
+        <button
+          type="button"
+          onClick={() => navigate(link)}
+          className="
+            inline-flex items-center justify-center
+            rounded-2xl
+            bg-white/20 hover:bg-white/30
+            border border-white/25
+            backdrop-blur-md
+            px-6 py-3
+            text-white font-semibold
+            transition
+          "
         >
-            {/* BACK GLOW (cat theme) */}
-            <div
-                className="
-          absolute inset-0
-          bg-gradient-to-br
-          from-amber-500/35
-          via-orange-600/25
-          to-yellow-900/35
-          blur-2xl
-          opacity-0
-          group-hover:opacity-100
-          transition duration-700
-        "
-            />
-
-            {/* CARD BODY */}
-            <div
-                className="
-          relative h-full w-full
-          bg-white/70
-          backdrop-blur-xl
-          border border-white/40
-          shadow-xl
-          rounded-3xl
-          flex flex-col
-          justify-end
-          overflow-hidden
-        "
-            >
-                {/* IMAGE */}
-                <img
-                    src={img}
-                    alt={title}
-                    className="
-            absolute inset-0
-            w-full h-full
-            object-cover
-            opacity-70
-            scale-105
-            transition-all duration-700
-            group-hover:scale-110
-            group-hover:opacity-100
-          "
-                />
-
-                {/* DARK OVERLAY */}
-                <div
-                    className="
-            absolute inset-0
-            bg-gradient-to-t
-            from-black/70
-            via-black/30
-            to-transparent
-          "
-                />
-
-                {/* CONTENT */}
-                <div
-                    className="
-            relative z-10
-            p-6
-            text-white
-            space-y-2
-            translate-y-6
-            group-hover:translate-y-0
-            transition-all duration-500
-          "
-                >
-                    <h2 className="text-2xl sm:text-3xl font-bold leading-tight">
-                        {words[0]} <br /> {words[1] || ""}
-                    </h2>
-
-                    <p
-                        className="
-              text-sm sm:text-base
-              opacity-0
-              group-hover:opacity-100
-              transition duration-500
-            "
-                    >
-                        {details}
-                    </p>
-                </div>
-            </div>
-        </Link>
-    );
+          Անցնել թեստը
+        </button>
+      </div>
+    </div>
+  );
 };
 
 const CardCat = () => {
-    const cards = [
-        {
-            img: `${import.meta.env.BASE_URL}CardDog.jpg`,
-            title: "Կատուների Աշխարհ",
-            details: "Սովորենք կատուների ճիշտ խնամքի մասին 🐱",
-            link: "/CatInfo",
-        },
-        {
-            img: `${import.meta.env.BASE_URL}CardDog2.jpg`,
-            title: "Հարցեր Quiz",
-            details: "Ստուգենք մեր գիտելիքները ✅",
-            link: "/CatQuiz",
-        },
-    ];
+  const cards = [
+    {
+      img: `${import.meta.env.BASE_URL}quizz_cats.png`,
+      title: "Հարցեր Quiz",
+      details: "Ստուգենք մեր գիտելիքները ✅",
+      link: "/CatQuiz",
+    },
+  ];
 
-    return (
-        <div
-            className="
-        bg-gradient-to-br
-        from-amber-50
-        via-orange-50
-        to-yellow-100
-        flex
-        justify-center
-        items-center
-        px-4
-        py-10
-      "
-        >
-            <div
-                className="
-          grid
-          gap-8
-          w-full
-          max-w-6xl
-          grid-cols-1
-          sm:grid-cols-2
-          place-items-center
-        "
-            >
-                {cards.map((card, i) => (
-                    <CanvasCard key={i} {...card} />
-                ))}
-            </div>
-        </div>
-    );
+  return (
+    <div className="min-h-screen flex items-center justify-center px-4 py-10 bg-gradient-to-br from-amber-50 via-orange-50 to-yellow-100">
+      <div className="w-full flex justify-center">
+        {cards.map((card, i) => (
+          <CanvasCard key={i} {...card} />
+        ))}
+      </div>
+    </div>
+  );
 };
 
 export default CardCat;

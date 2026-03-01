@@ -1,13 +1,15 @@
 // Dog.jsx
 import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 
 export default function Dog() {
     const slides = [
-        { id: 1, title: "Շների աշխարհը 🐶", text: "Բարի, հավատարիմ և ուրախ ընկերներ՝ յուրաքանչյուր տան համար։", image: `${import.meta.env.BASE_URL}Dog1.jpg` },
-        { id: 2, title: "Շների խնամք և սեր 💖", text: "Ճիշտ խնամքով՝ քո շունը կլինի երջանիկ և առողջ։", image: `${import.meta.env.BASE_URL}Dog2.jpg` },
-        { id: 3, title: "Խաղալիքներ և զբոսանքներ 🎾", text: "Ամեն օր փոքրիկ արկածներ՝ քո չորսաթաթ ընկերոջ հետ։", image: `${import.meta.env.BASE_URL}Dog3.jpg` },
-        { id: 4, title: "Շների տարբեր ցեղեր 🐾", text: "Յուրաքանչյուր ցեղ ունի իր բնավորությունը և յուրահատկությունը։", image: `${import.meta.env.BASE_URL}Dog4.jpg` },
-        { id: 5, title: "Շների սնունդ և առողջություն 🦴", text: "Լավ սնունդ՝ առողջ մարմնի և փայլուն բրդի գաղտնիքը։", image: `${import.meta.env.BASE_URL}Dog5.jpg` },
+        { id: 1, title: "Շների աշխարհը 🐶", text: "Բարի, հավատարիմ և ուրախ ընկերներ՝ յուրաքանչյուր տան համար։", image: `${import.meta.env.BASE_URL}Dog1.jpg`,
+    link:"/DogInfo"},
+        { id: 2, title: "Շների խնամք և սեր 💖", text: "Ճիշտ խնամքով՝ քո շունը կլինի երջանիկ և առողջ։", image: `${import.meta.env.BASE_URL}Dog2.jpg`,link:"/DogInfo" },
+        { id: 3, title: "Խաղալիքներ և զբոսանքներ 🎾", text: "Ամեն օր փոքրիկ արկածներ՝ քո չորսաթաթ ընկերոջ հետ։", image: `${import.meta.env.BASE_URL}Dog3.jpg`,link:"/DogInfo" },
+        { id: 4, title: "Շների տարբեր ցեղեր 🐾", text: "Յուրաքանչյուր ցեղ ունի իր բնավորությունը և յուրահատկությունը։", image: `${import.meta.env.BASE_URL}Dog4.jpg,link:"/DogInfo"` },
+        { id: 5, title: "Շների սնունդ և առողջություն 🦴", text: "Լավ սնունդ՝ առողջ մարմնի և փայլուն բրդի գաղտնիքը։", image: `${import.meta.env.BASE_URL}Dog5.jpg`,linj:"/DogInfo" },
     ];
 
     const [current, setCurrent] = useState(0);
@@ -30,18 +32,24 @@ export default function Dog() {
                     transform: `translateX(-${current * (100 / slides.length)}%)`,
                 }}
             >
+
                 {slides.map((slide) => (
-                    <div
+                    <Link
                         key={slide.id}
-                        className="w-full flex-shrink-0 h-screen relative"
+                        to={slide.link}
+                        className="w-full flex-shrink-0 h-screen relative block"
                         style={{ width: `${100 / slides.length}%` }}
                     >
-                        <img src={slide.image} alt={slide.title} className="absolute w-full h-full object-cover brightness-75" />
+                        <img
+                            src={slide.image}
+                            alt={slide.title}
+                            className="absolute w-full h-full object-cover brightness-75"
+                        />
                         <div className="absolute inset-0 flex flex-col justify-center items-center text-center text-white px-6">
                             <h2 className="text-4xl md:text-6xl font-bold drop-shadow-lg">{slide.title}</h2>
                             <p className="text-lg md:text-xl mt-4 max-w-2xl drop-shadow-md">{slide.text}</p>
                         </div>
-                    </div>
+                    </Link>
                 ))}
             </div>
 

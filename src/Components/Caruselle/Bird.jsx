@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 
 export default function Bird() {
     const slides = [
@@ -7,30 +8,35 @@ export default function Bird() {
             title: "Թռչունների կախարդական ծագումը 🦖➡️🕊️",
             text: "Գիտե՞ս, որ թռչունները սերում են դինոզավրերից։ Նրանց նախնիներն ունեցել են թե՛ ատամներ, թե՛ պոչ՝ նախքան ժամանակակից փետուրավոր տեսքը ստանալը։",
             image: `${import.meta.env.BASE_URL}Bird1.jpg`,
+            link: "/BirdsInfo"
         },
         {
             id: 2,
             title: "Թռչելու հրաշքը ✈️🐦",
             text: "Թռչունները թռչում են շնորհիվ թեթև կմախքի և հզոր թևերի մկանների։ Նրանց փետուրները ձևավորված են այնպես, որ հոսող օդը ստեղծի վերելք։",
             image: `${import.meta.env.BASE_URL}Bird2.jpg`,
+            link: "/BirdsInfo"
         },
         {
             id: 3,
             title: "Գույների և ձայների աշխարհը 🎨🎶",
             text: "Թռչունների գույներն ու երգերը հաղորդակցման ձևեր են․ գունավոր փետուրները գրավում են զուգընկերոջը, իսկ երգը՝ սահմանում տարածքը։",
             image: `${import.meta.env.BASE_URL}Bird3.jpg`,
+            link: "/BirdsInfo"
         },
         {
             id: 4,
             title: "Թռչունների օգտակար դերը բնության մեջ 🌍🐤",
             text: "Թռչունները օգնում են պահպանել բնության հավասարակշռությունը՝ տարածելով սերմեր և վերահսկելով միջատների քանակը։",
             image: `${import.meta.env.BASE_URL}Bird4.jpg`,
+            link: "/BirdsInfo"
         },
         {
             id: 5,
             title: "Թռչունների աշխարհի բազմազանությունը 🌈🕊️",
             text: "Աշխարհում կա ավելի քան 10,000 տեսակ թռչուն՝ սկսած փոքրիկ հումինգբերդից մինչև հսկա ոստրիճը։ Յուրաքանչյուրն ունի իր յուրահատուկ տեղը բնության մեջ։",
             image: `${import.meta.env.BASE_URL}Bird5.jpg`,
+            link: "/BirdsInfo"
         },
     ];
 
@@ -63,9 +69,10 @@ export default function Bird() {
                 }}
             >
                 {slides.map((slide) => (
-                    <div
+                    <Link
                         key={slide.id}
-                        className="w-full flex-shrink-0 h-screen relative"
+                        to={slide.link}
+                        className="w-full flex-shrink-0 h-screen relative block"
                         style={{ width: `${100 / slides.length}%` }}
                     >
                         <img
@@ -81,7 +88,7 @@ export default function Bird() {
                                 {slide.text}
                             </p>
                         </div>
-                    </div>
+                    </Link>
                 ))}
             </div>
 

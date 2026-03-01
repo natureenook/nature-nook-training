@@ -1,5 +1,6 @@
 // Fish.jsx
 import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 
 export default function Fish() {
     const slides = [
@@ -8,30 +9,35 @@ export default function Fish() {
             title: "Ձկների խորհրդավոր աշխարհը 🌊🐠",
             text: "Ձկները աշխարհի ամենահին կենդանիներից են՝ ապրում են միլիոնավոր տարիներ առաջ ձևավորված ջրային աշխարհում։ Նրանց գույներն ու ձևերը հիացնում են։",
             image: `${import.meta.env.BASE_URL}Fish1.jpg`,
+            link:"/FishInfo"
         },
         {
             id: 2,
             title: "Ջրի տակ շնչելու գաղտնիքը 🫧🐟",
             text: "Ձկները շնչում են ժիլխայթերի միջոցով՝ ջրից թթվածին վերցնելով։ Սա նրանց թույլ է տալիս ապրել խոր ջրերում, որտեղ մարդը չէր կարող գոյատևել։",
             image: `${import.meta.env.BASE_URL}Fish2.jpg`,
+             link:"/FishInfo"
         },
         {
             id: 3,
             title: "Ձկների գույների և ձևերի կախարդանքը 🎨✨",
             text: "Ձկների փայլուն գույները և նախշերը ոչ միայն գեղեցիկ են, այլև օգնում են քողարկվել թշնամիներից կամ գրավել զուգընկերոջ ուշադրությունը։",
             image: `${import.meta.env.BASE_URL}Fish3.jpg`,
+             link:"/FishInfo"
         },
         {
             id: 4,
             title: "Ձկների դերակատարությունը բնության մեջ 🌍🐡",
             text: "Ձկները պահպանում են էկոհամակարգերի հավասարակշռությունը՝ դառնալով սննդային շղթայի կարևոր օղակ։ Առանց նրանց, ջրային աշխարհը չէր գոյատևի։",
             image: `${import.meta.env.BASE_URL}Fish4.jpg`,
+             link:"/FishInfo"
         },
         {
             id: 5,
             title: "Ակվարիումի խաղաղ մթնոլորտը 💧🐠",
             text: "Տանը ակվարիում ունենալը ոչ միայն գեղեցիկ է, այլև հանգստացնող․ ձկների շարժումները օգնում են նվազեցնել սթրեսը և բարելավել տրամադրությունը։",
             image: `${import.meta.env.BASE_URL}Fish5.jpg`,
+             link:"/FishInfo"
         },
     ];
 
@@ -55,18 +61,24 @@ export default function Fish() {
                     transform: `translateX(-${current * (100 / slides.length)}%)`,
                 }}
             >
+
                 {slides.map((slide) => (
-                    <div
+                    <Link
                         key={slide.id}
-                        className="w-full flex-shrink-0 h-screen relative"
+                        to={slide.link}
+                        className="w-full flex-shrink-0 h-screen relative block"
                         style={{ width: `${100 / slides.length}%` }}
                     >
-                        <img src={slide.image} alt={slide.title} className="absolute w-full h-full object-cover brightness-75" />
+                        <img
+                            src={slide.image}
+                            alt={slide.title}
+                            className="absolute w-full h-full object-cover brightness-75"
+                        />
                         <div className="absolute inset-0 flex flex-col justify-center items-center text-center text-white px-6">
                             <h2 className="text-4xl md:text-6xl font-bold drop-shadow-lg">{slide.title}</h2>
                             <p className="text-lg md:text-xl mt-4 max-w-2xl drop-shadow-md">{slide.text}</p>
                         </div>
-                    </div>
+                    </Link>
                 ))}
             </div>
 

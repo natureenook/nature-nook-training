@@ -1,5 +1,6 @@
 // Cat.jsx
 import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 
 export default function Cat() {
     const slides = [
@@ -8,30 +9,39 @@ export default function Cat() {
             title: "Կատուների կախարդական աշխարհը 🐱✨",
             text: "Կատուները հնագույն կենդանիներ են՝ փափուկ մարմնով, նուրբ շարժումներով և խորհրդավոր հայացքով։ Նրանք եղել են աստվածացված՝ դեռևս Եգիպտոսում։",
             image: `${import.meta.env.BASE_URL}Cat1.jpg`,
+            link: "/CatInfo"
         },
         {
             id: 2,
             title: "Գույների գաղտնիքները 🎨😺",
             text: "Գիտե՞ս, որ եռագույն կատուները միշտ էգ են լինում, իսկ ռիժիկները՝ գրեթե միշտ որձ։ Դա պայմանավորված է գենետիկայով՝ X քրոմոսոմի գույնի գեներով։",
             image: `${import.meta.env.BASE_URL}Cat2.jpg`,
+            link: "/CatInfo"
+
         },
         {
             id: 3,
             title: "Կատվի լեզուն՝ փոքրիկ հրաշք 👅",
             text: "Կատվի լեզուն ծածկված է մանր խայթիկներով, որոնք օգնում են մաքրել մորթին և նույնիսկ «սանրել» միսը։ Այն գործում է ինչպես բնական խոզանակ։",
             image: `${import.meta.env.BASE_URL}Cat3.jpg`,
+            link: "/CatInfo"
+
         },
         {
             id: 4,
             title: "Ինչու են կատուները մռմռում? 💞🐾",
             text: "Կատուները մռմռում են ոչ միայն ուրախ լինելուց։ Դա նաև հանգստացնող մեխանիզմ է՝ բուժում են իրենց և նույնիսկ մարդկանց սթրեսը։",
             image: `${import.meta.env.BASE_URL}Cat4.jpg`,
+            link: "/CatInfo"
+
         },
         {
             id: 5,
             title: "Կատվի մարմնի լեզուն 🐈‍⬛🕵️‍♂️",
             text: "Երբ կատուն պոչը բարձր է պահում՝ ուրախ է, երբ պոչը շարժում է արագ՝ նյարդայնացած է։ Նրա յուրաքանչյուր շարժում խոսում է։",
             image: `${import.meta.env.BASE_URL}Cat5.jpg`,
+            link: "/CatInfo"
+
         },
     ];
 
@@ -55,10 +65,12 @@ export default function Cat() {
                     transform: `translateX(-${current * (100 / slides.length)}%)`,
                 }}
             >
+
                 {slides.map((slide) => (
-                    <div
+                    <Link
                         key={slide.id}
-                        className="w-full flex-shrink-0 h-screen relative"
+                        to={slide.link}
+                        className="w-full flex-shrink-0 h-screen relative block"
                         style={{ width: `${100 / slides.length}%` }}
                     >
                         <img
@@ -70,7 +82,7 @@ export default function Cat() {
                             <h2 className="text-4xl md:text-6xl font-bold drop-shadow-lg">{slide.title}</h2>
                             <p className="text-lg md:text-xl mt-4 max-w-2xl drop-shadow-md">{slide.text}</p>
                         </div>
-                    </div>
+                    </Link>
                 ))}
             </div>
 
