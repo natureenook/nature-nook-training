@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 
-import TrainingHeader from "../Header/Headerr.jsx";
-// import Footer from "../Footer/Footer.jsx";
 
 import Dog from "../Caruselle/Dog";
 import Cat from "../Caruselle/Cat";
@@ -23,7 +21,7 @@ export default function Main() {
     () => localStorage.getItem("hasStartedTraining") === "true"
   );
 
-  // preloader ժամանակ scroll-ը փակել
+
   useEffect(() => {
     document.body.style.overflow = started ? "auto" : "hidden";
     return () => (document.body.style.overflow = "auto");

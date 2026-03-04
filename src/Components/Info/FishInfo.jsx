@@ -2,7 +2,10 @@ import React from "react";
 import { motion } from "framer-motion";
 import { Link, useNavigate } from "react-router-dom";
 
-const img = (name) => `${import.meta.env.BASE_URL}${name}`;
+const img = (name) => {
+    const base = import.meta.env.BASE_URL || "/";
+    return new URL(base + name, window.location.origin).toString();
+};
 
 const sections = [
     {
@@ -65,7 +68,6 @@ const sections = [
         content:
             "Եթե ձուկը դառնում է պասիվ, թաքնվում է, շնչում է արագ, լողում է կողքով կամ մակերեսին մոտ, դա կարող է լինել հիվանդության կամ ջրի վատ որակի նշան։ Սպիտակ կետերը, փշաքաղված լողակները կամ ախորժակի կորուստը նույնպես վտանգավոր ազդակներ են։ Կանխարգելման համար կարևոր է՝ նոր ձկների կարանտին, չափավոր սնուցում, կայուն ջերմաստիճան և մաքուր ջուր։ Եթե նշանները ուժեղանում են՝ ճիշտ է արագ դիմել մասնագետի կամ անասնաբույժի խորհրդի։",
     },
-    
 ];
 
 export default function FishInfo() {

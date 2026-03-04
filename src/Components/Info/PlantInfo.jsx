@@ -1,9 +1,11 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { useNavigate } from "react-router-dom";
-import { Link } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 
-const img = (name) => `${import.meta.env.BASE_URL}${name}`;
+const img = (name) => {
+    const base = import.meta.env.BASE_URL || "/";
+    return new URL(base + name, window.location.origin).toString();
+};
 
 const sections = [
     {
@@ -110,6 +112,7 @@ export default function PlantInfo() {
                     </motion.section>
                 ))}
             </main>
+
             <div className="flex justify-center items-center pb-10">
                 <Link
                     to="/PlantsQuiz"

@@ -1,9 +1,12 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { useNavigate } from "react-router-dom";
-import { Link } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 
-const img = (name) => `${import.meta.env.BASE_URL}${name}`;
+const img = (name) => {
+    const base = import.meta.env.BASE_URL || "/";
+    // window.location.origin-ը միշտ valid base է
+    return new URL(base + name, window.location.origin).toString();
+};
 
 const sections = [
     {
@@ -62,7 +65,7 @@ const sections = [
     },
     {
         title: "Կատվի առողջության հիմնական նշանները և խնամքի հիմունքները 🩺🧼",
-        image: img("Կատուների ճիշտ սննդակարգը՝ ինչ, որքան, երբ.png"),
+        image: img("Կատվի առողջության հիմնական նշանները և խնամքի հիմունքները.png"),
         content:
             "Առողջ կատուն ակտիվ է, հետաքրքրասեր և ունի կայուն ախորժակ։ Աչքերը պետք է լինեն մաքուր ու լուսավոր, բուրդը՝ փայլուն, իսկ շունչը՝ առանց տհաճ հոտի։ Խնամքի հիմքում են՝ մաքուր լոտոկը, ճիշտ սնունդը, ջուրը, կանոնավոր սանրումը և ժամանակին պատվաստումները ու պարազիտներից պաշտպանությունը։ Եթե նկատում ես քնկոտություն, ախորժակի կորուստ, փսխում, փորլուծություն կամ վարքի կտրուկ փոփոխություն՝ ավելի ճիշտ է դիմել անասնաբույժի։ 🐱🐾",
     },
@@ -110,6 +113,7 @@ export default function CatInfo() {
                     </motion.section>
                 ))}
             </main>
+
             <div className="flex justify-center items-center pb-10">
                 <Link
                     to="/CatQuiz"
