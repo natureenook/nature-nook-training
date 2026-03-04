@@ -2,10 +2,10 @@ import React from "react";
 import { motion } from "framer-motion";
 import { useNavigate, Link } from "react-router-dom";
 
-// Նկարները public-ում են, այսինքն path-ը root-ից է գալիս
-// Այս տարբերակը ճիշտ է աշխատում նաև GitHub Pages-ի base path-ի հետ
-const img = (name) => new URL(name, import.meta.env.BASE_URL).toString();
-
+const img = (name) => {
+    const base = import.meta.env.BASE_URL || "/";
+    return new URL(base + name, window.location.origin).toString();
+};
 const sections = [
     {
         title: "Թռչունների հիանալի ծագումը 🦖➡️🕊",
