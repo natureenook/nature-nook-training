@@ -1,9 +1,10 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { useNavigate } from "react-router-dom";
-import { Link } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 
-const img = (name) => `${import.meta.env.BASE_URL}${name}`;
+// Նկարները public-ում են, այսինքն path-ը root-ից է գալիս
+// Այս տարբերակը ճիշտ է աշխատում նաև GitHub Pages-ի base path-ի հետ
+const img = (name) => new URL(name, import.meta.env.BASE_URL).toString();
 
 const sections = [
     {
@@ -110,6 +111,7 @@ export default function BirdInfo() {
                     </motion.section>
                 ))}
             </main>
+
             <div className="flex justify-center items-center pb-10">
                 <Link
                     to="/BirdsQuiz"
@@ -120,4 +122,4 @@ export default function BirdInfo() {
             </div>
         </div>
     );
-}
+} 
