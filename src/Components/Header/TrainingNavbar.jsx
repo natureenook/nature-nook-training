@@ -1,87 +1,150 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
+import {
+    ArrowRight,
+    Bird,
+    Fish,
+    Leaf,
+    Menu,
+    PawPrint,
+    Sprout,
+    X,
+} from "lucide-react";
+
+const navLinks = [
+    { title: "Շներ", link: "/DogInfo", icon: PawPrint },
+    { title: "Կատուներ", link: "/CatInfo", icon: PawPrint },
+    { title: "Թռչուններ", link: "/BirdsInfo", icon: Bird },
+    { title: "Ձկներ", link: "/FishInfo", icon: Fish },
+    { title: "Բույսեր", link: "/PlantsInfo", icon: Sprout },
+];
 
 export default function TrainingNavbar({ fixed = true }) {
     const [isMenuOpen, setIsMenuOpen] = React.useState(false);
-    const toggleMenu = () => setIsMenuOpen((v) => !v);
+
+    const toggleMenu = () => setIsMenuOpen((value) => !value);
 
     const Header = (
-        <header className="relative z-50 flex items-center justify-between px-6 md:px-10 py-4 bg-white/70 backdrop-blur-md shadow-lg rounded-b-2xl">
-            <Link to={"/"}>
-                <h1 className="text-xl md:text-2xl font-bold text-[#0b241f] tracking-wide">
-                    Nature Nook <span className="text-[#5d8c73]">Training</span>
-                </h1>
-            </Link>
+        <header className="relative z-50 mx-auto w-full max-w-7xl px-4 pt-4 sm:px-6 lg:px-8">
+            <div className="flex items-center justify-between rounded-[28px] border border-emerald-100 bg-white/85 px-4 py-3 shadow-[0_18px_60px_rgba(16,32,24,0.075)] backdrop-blur-2xl sm:px-5">
+                <Link to="/" className="group flex items-center gap-3">
+                    <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-emerald-50 transition group-hover:scale-105">
+                        <Leaf size={22} className="text-emerald-700" />
+                    </div>
 
-            <nav className="hidden lg:flex gap-8 text-lg font-medium">
-                <Link to="/DogInfo" className="hover:text-[#5d8c73] transition">Շներ</Link>
-                <Link to="/CatInfo" className="hover:text-[#5d8c73] transition">Կատուներ</Link>
-                <Link to="/BirdsInfo" className="hover:text-[#5d8c73] transition">Թռչուններ</Link>
-                <Link to="/FishInfo" className="hover:text-[#5d8c73] transition">Ձկներ</Link>
-                <Link to="/PlantsInfo" className="hover:text-[#5d8c73] transition">Բույսեր</Link>
-            </nav>
+                    <div>
+                        <h1 className="text-lg font-black tracking-[-0.03em] text-[#102018] sm:text-xl">
+                            Nature Nook
+                        </h1>
+                        <p className="text-xs font-bold text-emerald-700">
+                            Ուսուցողական բաժին
+                        </p>
+                    </div>
+                </Link>
 
-            <button
-                className="lg:hidden text-[#0b241f] focus:outline-none z-50 relative"
-                onClick={toggleMenu}
-                aria-label="Menu"
-            >
-                <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    {isMenuOpen ? (
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-                    ) : (
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-                    )}
-                </svg>
-            </button>
+                <nav className="hidden items-center gap-2 lg:flex">
+                    {navLinks.map((item) => (
+                        <Link
+                            key={item.title}
+                            to={item.link}
+                            className="rounded-full px-4 py-2 text-sm font-black text-[#607269] transition hover:bg-emerald-50 hover:text-emerald-800"
+                        >
+                            {item.title}
+                        </Link>
+                    ))}
+                </nav>
+
+                <button
+                    className="flex h-11 w-11 items-center justify-center rounded-2xl border border-emerald-100 bg-[#f6fbf7] text-[#102018] transition hover:bg-emerald-50 lg:hidden"
+                    onClick={toggleMenu}
+                    aria-label="Բացել մենյուն"
+                >
+                    {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
+                </button>
+            </div>
         </header>
     );
 
     return (
         <>
             {fixed ? (
-                <div className="fixed top-0 left-0 right-0 z-50">{Header}</div>
+                <div className="fixed left-0 right-0 top-0 z-50">
+                    {Header}
+                </div>
             ) : (
                 Header
             )}
 
-            {/* Mobile overlay */}
             {isMenuOpen && (
                 <motion.div
                     initial={{ opacity: 0, x: "100%" }}
                     animate={{ opacity: 1, x: 0 }}
                     exit={{ opacity: 0, x: "100%" }}
-                    transition={{ type: "spring", stiffness: 100, damping: 20 }}
-                    className="fixed inset-0 z-[60] bg-white/95 backdrop-blur-xl flex flex-col items-center justify-center lg:hidden"
+                    transition={{ type: "spring", stiffness: 120, damping: 22 }}
+                    className="fixed inset-0 z-[80] bg-[#f6fbf7]/95 px-5 backdrop-blur-2xl lg:hidden"
                     onClick={toggleMenu}
                 >
-                    <button
-                        className="absolute top-6 right-6 p-2 rounded-full hover:bg-black/5 transition"
-                        onClick={(e) => {
-                            e.stopPropagation();
-                            toggleMenu();
-                        }}
-                        aria-label="Close"
-                    >
-                        <svg className="w-8 h-8 text-[#0b241f]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-                        </svg>
-                    </button>
+                    <div className="mx-auto flex h-full max-w-md flex-col justify-center">
+                        <button
+                            className="absolute right-5 top-5 flex h-12 w-12 items-center justify-center rounded-2xl border border-emerald-100 bg-white text-[#102018] shadow-[0_14px_40px_rgba(16,32,24,0.08)]"
+                            onClick={(e) => {
+                                e.stopPropagation();
+                                toggleMenu();
+                            }}
+                            aria-label="Փակել մենյուն"
+                        >
+                            <X size={25} />
+                        </button>
 
-                    <nav
-                        className="flex flex-col gap-8 text-2xl font-semibold text-[#0b241f] text-center"
-                        onClick={(e) => e.stopPropagation()}
-                    >
-                        <Link to="/DogInfo" className="hover:text-[#5d8c73] transition transform hover:scale-110" onClick={toggleMenu}>Շներ</Link>
-                        <Link to="/CatInfo" className="hover:text-[#5d8c73] transition transform hover:scale-110" onClick={toggleMenu}>Կատուներ</Link>
-                        <Link to="/BirdsInfo" className="hover:text-[#5d8c73] transition transform hover:scale-110" onClick={toggleMenu}>Թռչուններ</Link>
-                        <Link to="/FishInfo" className="hover:text-[#5d8c73] transition transform hover:scale-110" onClick={toggleMenu}>Ձկներ</Link>
-                        <Link to="/PlantsInfo" className="hover:text-[#5d8c73] transition transform hover:scale-110" onClick={toggleMenu}>Բույսեր</Link>
-                    </nav>
+                        <div
+                            className="rounded-[36px] border border-emerald-100 bg-white/90 p-6 shadow-[0_24px_90px_rgba(16,32,24,0.1)]"
+                            onClick={(e) => e.stopPropagation()}
+                        >
+                            <div className="mb-7 text-center">
+                                <div className="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-3xl bg-emerald-50">
+                                    <Leaf size={26} className="text-emerald-700" />
+                                </div>
 
-                    <div className="absolute bottom-10 text-sm text-[#5d8c73]/70">
-                        Nature Nook Training 🌿
+                                <h2 className="text-2xl font-black tracking-[-0.035em] text-[#102018]">
+                                    Ընտրիր բաժինը
+                                </h2>
+
+                                <p className="mt-2 text-sm text-[#607269]">
+                                    Անցիր քեզ հետաքրքրող ուսուցողական նյութերին
+                                </p>
+                            </div>
+
+                            <nav className="grid gap-3">
+                                {navLinks.map((item) => {
+                                    const Icon = item.icon;
+
+                                    return (
+                                        <Link
+                                            key={item.title}
+                                            to={item.link}
+                                            onClick={toggleMenu}
+                                            className="group flex items-center justify-between rounded-[24px] border border-emerald-100 bg-[#f6fbf7] p-4 transition hover:bg-emerald-50"
+                                        >
+                                            <div className="flex items-center gap-3">
+                                                <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-white">
+                                                    <Icon size={20} className="text-emerald-700" />
+                                                </div>
+
+                                                <span className="font-black text-[#102018]">
+                                                    {item.title}
+                                                </span>
+                                            </div>
+
+                                            <ArrowRight
+                                                size={18}
+                                                className="text-[#9aaba2] transition group-hover:translate-x-1 group-hover:text-emerald-700"
+                                            />
+                                        </Link>
+                                    );
+                                })}
+                            </nav>
+                        </div>
                     </div>
                 </motion.div>
             )}
